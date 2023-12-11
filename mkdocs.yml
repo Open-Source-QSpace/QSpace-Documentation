@@ -4,10 +4,13 @@ nav:
   - Getting started:
     - What is QSpace?: index.md
     - Installation: installation.md
+  - Tutorial:
+    - "Starting Point: getLocalSpace": tutorial/getLocalSpace.md
   - Examples:
     - Iterative Diagonalization: iterdiag.md
   - Reference:
-    - contractQS: contractQS.md
+    - getLocalSpace: reference/getLocalSpace.md
+    - contractQS: reference/contractQS.md
   - Contribute:
     - Markdown Guide: mdref.md
     - MkDocs Guide: mkdocsg.md
