@@ -281,3 +281,5 @@ For a link with a title, add the title in quotes after the URL:
 In our documentation, we leverage Markdown extensions to enrich the standard Markdown syntax. These extensions are invaluable for adding advanced formatting and interactive elements that are not possible with basic Markdown. They are particularly useful in creating comprehensive and user-friendly documentation, allowing for more engaging and organized content.
 
 For example, extensions enable the inclusion of tabbed content, detailed footnotes, custom admonition blocks, and enhanced code blocks with syntax highlighting. To explore the full range of possibilities these extensions offer, and for detailed syntax reference, please visit [MkDocs Material Extensions Reference](https://squidfunk.github.io/mkdocs-material/reference/).
+
+&nbsp;
