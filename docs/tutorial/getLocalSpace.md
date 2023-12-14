@@ -6,9 +6,9 @@ The `getLocalSpace` function in the QSpace library is the foundational step for 
 
 - **General Form**: `[FF,...,Iout]=getLocalSpace(model, ['sym1,sym2,...', varargin])`
 - **Parameters Explained**:
-  - `model`: This denotes the quantum model type. It could be fermions (spinful/spinless), spin operators, etc.
-  - `sym1, sym2, ...`: These are symmetries applicable to the model. Examples include total charge, spin, and particle-hole symmetry.
-  - `varargin`: Additional options for customizing the function's operation, like specifying the number of channels or enabling verbose mode for detailed output.
+    - `model`: This denotes the quantum model type. It could be fermions (spinful/spinless), spin operators, etc.
+    - `sym1, sym2, ...`: These are symmetries applicable to the model. Examples include total charge, spin, and particle-hole symmetry.
+    - `varargin`: Additional options for customizing the function's operation, like specifying the number of channels or enabling verbose mode for detailed output.
 
 ## Delving into Supported Models and Options
 
