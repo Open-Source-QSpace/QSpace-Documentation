@@ -12,6 +12,7 @@ nav:
     - getLocalSpace: reference/getLocalSpace.md
     - contractQS: reference/contractQS.md
   - Contribute:
+    - How to Contribute: contribg.md
     - Markdown Guide: mdref.md
     - MkDocs Guide: mkdocsg.md
 
