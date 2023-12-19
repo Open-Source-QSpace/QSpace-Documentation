@@ -3,7 +3,9 @@ site_name: QSpace Documentation
 nav:
   - Getting started:
     - What is QSpace?: index.md
-    - Installation: installation.md
+    - Installation:
+      - "Install on Linux": Linux.md
+      - "Install on macOS": macOS.md
   - Tutorial:
     - "Starting Point: getLocalSpace": tutorial/getLocalSpace.md
   - Examples:
@@ -22,6 +24,7 @@ theme:
   logo: assets/logo.png
   features:
     - navigation.tabs
+    - navigation.sections
   icon:
     admonition:
       note: fontawesome/solid/note-sticky
