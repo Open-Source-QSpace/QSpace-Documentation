@@ -68,9 +68,9 @@ involved compared to Linux, Andreas W. kindly provides the binaries
 together.) The remaining step is to set environment variables and paths;
 see [Set environment variables and paths](#sec:startup).
 
-# Set environment variables and paths {#sec:startup}
+## Set environment variables and paths {#sec:startup}
 
-## Set `RC_STORE`
+### Set `RC_STORE`
 
 `RC_STORE` is the only environment variable that needs to be set by
 users, to execute the QSpace functions (both `.m` and `MEX`). This
@@ -98,7 +98,7 @@ local increment will remain small. On the other hand, for laptops and
 desktops, such distinction might be an overkill; one can simply set
 `RC_STORE` as a single path.
 
-## Modify `startup.m`
+### Modify `startup.m`
 
 `startup.m` is a script that is first executed upon starting up a MATLAB
 session, so that important environment variables and paths are set
@@ -108,12 +108,12 @@ variables. Mostly such variables are for paths that depend on computing
 systems. Please follow the instruction in `startup.m` to set the
 environment variables properly.
 
-# Troubleshooting
+## Troubleshooting
 
 In the following, some known issues regarding QSpace and their
 workarounds are given.
 
-## MEX files cannot be opened because the developer cannot be verified
+### MEX files cannot be opened because the developer cannot be verified
 
 When you try to use QSpace, some higher version of macOS might
 complain that the developer of the MEX function binaries not verified,
@@ -122,9 +122,6 @@ the command
 
 ```
 sudo xattr -r -d com.apple.quarantine ~/Documents/MATLAB/QSpace_v4.0
-```
-
-```
 sudo find ~/Documents/MATLAB/QSpace_v4.0 -name \`$\ast$`.mexmaci64 -exec spctl –add {} \;
 ```
 
@@ -132,7 +129,7 @@ Note that the last command line is a single line so make the command as
 a single line if it is divided. For more information, refer to
 [here](http://www.fieldtriptoolbox.org/faq/mexmaci64_cannot_be_opened_because_the_developer_cannot_be_verified/).
 
-## Invalid MEX file, Library not loaded
+### Invalid MEX file, Library not loaded
 
 If your Mac uses the Apple silicon chip, such as the M1 or M2 chips,
 MATLAB might complain that the MEX files are not valid and show the
@@ -170,12 +167,11 @@ following commands on the terminal:
 
 ```
 sudo xattr -r -d com.apple.quarantine /usr/local/opt/gmp/lib/
-```
-
-```
 sudo find /usr/local/opt/gmp/lib/ -name \`$\ast$`.dylib -exec spctl –add {} \;
 ```
 
 If macOS still complains, go to `System Settings...` $\rightarrow$
 `Security & Privacy` $\rightarrow$ click 'Open Anyway' for
 `libgmp.10.dylib`.
+
+&nbsp;

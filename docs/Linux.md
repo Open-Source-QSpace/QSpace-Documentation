@@ -104,21 +104,9 @@ typing following commands.
 
 ```
 sudo apt install build-essential
-```
-
-```
 sudo apt-get install -y gcc-9
-```
-
-```
 cd /usr/bin
-```
-
-```
 sudo rm gcc
-```
-
-```
 sudo ln -s gcc-9 gcc
 ```
 
@@ -132,12 +120,8 @@ If you want to roll back to the `gcc` of version 11, type in the
 terminal:
 
 ```
-cd /usr/bin```
-
-```
-sudo rm gcc```
-
-```
+cd /usr/bin
+sudo rm gcc
 sudo ln -s gcc-11 gcc
 ```
 
@@ -154,9 +138,9 @@ codes. First, open a MATLAB session. Then run the function
 The remaining step before using the `QSpace` library is to set
 environment variables and paths; see [Set environment variables and paths](#sec:startup).
 
-# Set environment variables and paths {#sec:startup}
+## Set environment variables and paths {#sec:startup}
 
-## Set `RC_STORE`
+### Set `RC_STORE`
 
 `RC_STORE` is the only environment variable that needs to be set by
 users, to execute the QSpace functions (both `.m` and `MEX`). This
@@ -184,7 +168,7 @@ local increment will remain small. On the other hand, for laptops and
 desktops, such distinction might be an overkill; one can simply set
 `RC_STORE` as a single path.
 
-## Modify `startup.m`
+### Modify `startup.m`
 
 `startup.m` is a script that is first executed upon starting up a MATLAB
 session, so that important environment variables and paths are set
@@ -194,12 +178,12 @@ variables. Mostly such variables are for paths that depend on computing
 systems. Please follow the instruction in `startup.m` to set the
 environment variables properly.
 
-# Troubleshooting
+## Troubleshooting
 
 In the following, some known issues regarding QSpace and their
 workarounds are given.
 
-## make: command not found
+### make: command not found
 
 When you try to compile QSpace, MATLAB might show the following error
 message.
@@ -217,7 +201,7 @@ To resolve this error, install `make` by typing the following command.
 sudo apt install make
 ```
 
-## Invalid MEX file, GLIBCXX not found
+### Invalid MEX file, GLIBCXX not found
 
 When you try to use QSpace, MATLAB might complain that the MEX files
 are not valid and show the following error message.
@@ -234,17 +218,8 @@ To resolve this error, try following commands in the terminal.
 
 ```
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test`
-```
-
-```
 sudo apt-get update
-```
-
-```
 sudo apt-get install gcc-4.9
-```
-
-```
 sudo apt-get upgrade libstdc++6
 ```
 
@@ -268,3 +243,5 @@ sudo cp /usr/lib/x86_64-linux-gnu/libstdc++.so.6 /usr/local/MATLAB/R2021b/sys/os
 
 Then, recomplie the sourse code by running the function `Util/compile.m`
 again.
+
+&nbsp;
