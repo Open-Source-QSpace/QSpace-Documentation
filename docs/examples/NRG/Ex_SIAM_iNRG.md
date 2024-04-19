@@ -1,4 +1,4 @@
-```
+```matlab
 % iNRG example of SIAM; break spin symmetry
 
 clear

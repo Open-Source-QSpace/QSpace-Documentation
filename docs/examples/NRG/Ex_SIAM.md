@@ -1,4 +1,4 @@
-```
+```matlab
 % Example: NRG calculation of SIAM
 
 clear
