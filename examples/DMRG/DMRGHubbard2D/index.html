@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../../NRG/Ex_SIAM_iNRG/">
+        <link rel="prev" href="../../NRG/NRG_SpecFunc/">
       
       
         <link rel="next" href="../../../reference/getLocalSpace/">
@@ -829,6 +829,90 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NRG/NRG_Eflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NRG Energy Flow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NRG/NRG_Kondo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NRG for SIKM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NRG/NRG_Kondo_Thermal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SIKM Thermal Properties
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NRG/NRG_SpecFunc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NRG for Spectral Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1172,125 +1256,125 @@
   <h1>2D Hubbard Model</h1>
 
 <p>Complete source code can be downloaded from <a href="../DMRGHubbard2D.zip">DMRG</a>.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>clear;
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">clear</span><span class="p">;</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>%%% begin input parameters %%%
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c">%%% begin input parameters %%%</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>t = 1; % nn-hopping amplitude
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>t_ = -0.2; % nnn-hopping amplitude
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>U = 8; % onsite repulsion
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">% nn-hopping amplitude</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">t_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mf">0.2</span><span class="p">;</span><span class="w"> </span><span class="c">% nnn-hopping amplitude</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">U</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="c">% onsite repulsion</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>width = 5; % width of cylinder
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>height = 4; % height of cylinder
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>fPBC = true; % periodic boundary conditions along y
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nb">width</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="c">% width of cylinder</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nb">height</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="c">% height of cylinder</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">fPBC</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="c">% periodic boundary conditions along y</span>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>sym = &#39;SU2&#39;; % U(1)_{charge} x SU(2)_{spin}
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>%sym = &#39;U1&#39;; % U(1)_{charge} x U(1)_{spin}
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">sym</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;SU2&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">% U(1)_{charge} x SU(2)_{spin}</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="c">%sym = &#39;U1&#39;; % U(1)_{charge} x U(1)_{spin}</span>
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>D = 2000; % MPS bond dimension
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>w = ham.get_num_mpo_states( sym, height, fPBC, t_ );
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>D_prime = floor(D/w);
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>D_hat = D;
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>D_tilde = floor(D/10);
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">D</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span><span class="w"> </span><span class="c">% MPS bond dimension</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ham</span><span class="p">.</span><span class="n">get_num_mpo_states</span><span class="p">(</span><span class="w"> </span><span class="n">sym</span><span class="p">,</span><span class="w"> </span><span class="nb">height</span><span class="p">,</span><span class="w"> </span><span class="n">fPBC</span><span class="p">,</span><span class="w"> </span><span class="n">t_</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="n">D_prime</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">floor</span><span class="p">(</span><span class="n">D</span><span class="o">/</span><span class="n">w</span><span class="p">);</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="n">D_hat</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">D</span><span class="p">;</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="n">D_tilde</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">floor</span><span class="p">(</span><span class="n">D</span><span class="o">/</span><span class="mi">10</span><span class="p">);</span>
 </span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>num_sweeps = 1000; % number of sweeps
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>num_davidson = 3; % number of davidson steps
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>eps_davidson = 1e-10; % threshold for termination of davidson
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>num_zero = 1e-10; % numerical zero
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="n">num_sweeps</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span><span class="w"> </span><span class="c">% number of sweeps</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="n">num_davidson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c">% number of davidson steps</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="n">eps_davidson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e-10</span><span class="p">;</span><span class="w"> </span><span class="c">% threshold for termination of davidson</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="n">num_zero</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e-10</span><span class="p">;</span><span class="w"> </span><span class="c">% numerical zero</span>
 </span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>% pick type of optimization
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>%opt_enum = 1; % twosite
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>opt_enum = 2; % shrewd cbe 
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="c">% pick type of optimization</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="c">%opt_enum = 1; % twosite</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="n">opt_enum</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c">% shrewd cbe </span>
 </span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>%%% end input paramters %%%
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="c">%%% end input paramters %%%</span>
 </span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
-</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>N = width*height;
-</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>if strcmp(sym,&#39;U1&#39;)
-</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    [F,Z,S,I] = getLocalSpace(&#39;FermionS&#39;,&#39;Acharge,Aspin&#39;);
-</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>else
-</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    [F,Z,S,I] = getLocalSpace(&#39;FermionS&#39;,&#39;Acharge,SU2spin&#39;);
-</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>end
-</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>local_space = {F,Z,S,I};
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">width</span><span class="o">*</span><span class="nb">height</span><span class="p">;</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="k">if</span><span class="w"> </span><span class="nb">strcmp</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span><span class="s">&#39;U1&#39;</span><span class="p">)</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">    </span><span class="p">[</span><span class="n">F</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">I</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getLocalSpace</span><span class="p">(</span><span class="s">&#39;FermionS&#39;</span><span class="p">,</span><span class="s">&#39;Acharge,Aspin&#39;</span><span class="p">);</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="k">else</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">    </span><span class="p">[</span><span class="n">F</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">I</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getLocalSpace</span><span class="p">(</span><span class="s">&#39;FermionS&#39;</span><span class="p">,</span><span class="s">&#39;Acharge,SU2spin&#39;</span><span class="p">);</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="k">end</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="n">local_space</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="n">F</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">I</span><span class="p">};</span>
 </span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>
-</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>% initialize tensor network
-</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>network = Network;
-</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>network.mps = ham.get_prod_state(N,sym);
-</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>network.mpo = ham.get_mpo( t, t_, U, sym, width, height, fPBC );
-</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>network.model_iden = I.E;
-</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>network.D = D;
-</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>network.D_prime = D_prime;
-</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>network.D_hat = D_hat;
-</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>network.D_tilde = D_tilde;
-</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>network.num_davidson = num_davidson;
-</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>network.eps_davidson = eps_davidson;
-</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>network.num_zero = num_zero;
-</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>network.num_zero = num_zero;
-</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>network.opt_enum = opt_enum;
-</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>network.timetracker = TimeTracker;
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="c">% initialize tensor network</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="n">network</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Network</span><span class="p">;</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="n">network</span><span class="p">.</span><span class="n">mps</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ham</span><span class="p">.</span><span class="n">get_prod_state</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">sym</span><span class="p">);</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="n">network</span><span class="p">.</span><span class="n">mpo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ham</span><span class="p">.</span><span class="n">get_mpo</span><span class="p">(</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">t_</span><span class="p">,</span><span class="w"> </span><span class="n">U</span><span class="p">,</span><span class="w"> </span><span class="n">sym</span><span class="p">,</span><span class="w"> </span><span class="nb">width</span><span class="p">,</span><span class="w"> </span><span class="nb">height</span><span class="p">,</span><span class="w"> </span><span class="n">fPBC</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="n">network</span><span class="p">.</span><span class="n">model_iden</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">I</span><span class="p">.</span><span class="n">E</span><span class="p">;</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="n">network</span><span class="p">.</span><span class="n">D</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">D</span><span class="p">;</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="n">network</span><span class="p">.</span><span class="n">D_prime</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">D_prime</span><span class="p">;</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="n">network</span><span class="p">.</span><span class="n">D_hat</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">D_hat</span><span class="p">;</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="n">network</span><span class="p">.</span><span class="n">D_tilde</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">D_tilde</span><span class="p">;</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="n">network</span><span class="p">.</span><span class="n">num_davidson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">num_davidson</span><span class="p">;</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="n">network</span><span class="p">.</span><span class="n">eps_davidson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">eps_davidson</span><span class="p">;</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="n">network</span><span class="p">.</span><span class="n">num_zero</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">num_zero</span><span class="p">;</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="n">network</span><span class="p">.</span><span class="n">num_zero</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">num_zero</span><span class="p">;</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="n">network</span><span class="p">.</span><span class="n">opt_enum</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">opt_enum</span><span class="p">;</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="n">network</span><span class="p">.</span><span class="n">timetracker</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">TimeTracker</span><span class="p">;</span>
 </span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>
-</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>fprintf(&quot;DMRG ground state calculation for the Hubbard model on a cylinder\n\n&quot;);
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;DMRG ground state calculation for the Hubbard model on a cylinder\n\n&quot;</span><span class="p">);</span>
 </span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>
-</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>if strcmp(sym,&#39;U1&#39;)
-</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>    fprintf(&quot;Acharge,Aspin\n&quot;);
-</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>else
-</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>    fprintf(&quot;Acharge,SU2spin\n&quot;);
-</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>end
-</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>if fPBC==1
-</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>    fprintf(&quot;periodic boundary conditions in y\n&quot;);
-</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>else
-</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>    fprintf(&quot;open boundary conditions in y\n&quot;);
-</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>end
-</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>fprintf(&quot;t: %.16f\n&quot;,t);
-</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>fprintf(&quot;t_: %.16f\n&quot;,t_);
-</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>fprintf(&quot;U: %.16f\n&quot;,U);
-</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>fprintf(&quot;width: %i\n&quot;,width);
-</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>fprintf(&quot;height: %i\n&quot;,height);
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="k">if</span><span class="w"> </span><span class="nb">strcmp</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span><span class="s">&#39;U1&#39;</span><span class="p">)</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;Acharge,Aspin\n&quot;</span><span class="p">);</span>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="k">else</span>
+</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;Acharge,SU2spin\n&quot;</span><span class="p">);</span>
+</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="k">end</span>
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="k">if</span><span class="w"> </span><span class="n">fPBC</span><span class="o">==</span><span class="mi">1</span>
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;periodic boundary conditions in y\n&quot;</span><span class="p">);</span>
+</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="k">else</span>
+</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;open boundary conditions in y\n&quot;</span><span class="p">);</span>
+</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="k">end</span>
+</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;t: %.16f\n&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">);</span>
+</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;t_: %.16f\n&quot;</span><span class="p">,</span><span class="n">t_</span><span class="p">);</span>
+</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;U: %.16f\n&quot;</span><span class="p">,</span><span class="n">U</span><span class="p">);</span>
+</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;width: %i\n&quot;</span><span class="p">,</span><span class="nb">width</span><span class="p">);</span>
+</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;height: %i\n&quot;</span><span class="p">,</span><span class="nb">height</span><span class="p">);</span>
 </span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>
-</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>fprintf(&quot;D: %i\n&quot;,D);
-</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>fprintf(&quot;D_prime: %i\n&quot;,D_prime);
-</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>fprintf(&quot;D_hat: %i\n&quot;,D_hat);
-</span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>fprintf(&quot;D_tilde: %i\n&quot;,D_tilde);
-</span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>fprintf(&quot;num_sweeps: %i\n&quot;,num_sweeps);
-</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>fprintf(&quot;num_davidson: %.16f\n&quot;,num_davidson);
-</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>fprintf(&quot;eps_davidson: %.16f\n&quot;,eps_davidson);
-</span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>fprintf(&quot;num_zero: %i\n&quot;,num_zero);
+</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;D: %i\n&quot;</span><span class="p">,</span><span class="n">D</span><span class="p">);</span>
+</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;D_prime: %i\n&quot;</span><span class="p">,</span><span class="n">D_prime</span><span class="p">);</span>
+</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;D_hat: %i\n&quot;</span><span class="p">,</span><span class="n">D_hat</span><span class="p">);</span>
+</span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;D_tilde: %i\n&quot;</span><span class="p">,</span><span class="n">D_tilde</span><span class="p">);</span>
+</span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;num_sweeps: %i\n&quot;</span><span class="p">,</span><span class="n">num_sweeps</span><span class="p">);</span>
+</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;num_davidson: %.16f\n&quot;</span><span class="p">,</span><span class="n">num_davidson</span><span class="p">);</span>
+</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;eps_davidson: %.16f\n&quot;</span><span class="p">,</span><span class="n">eps_davidson</span><span class="p">);</span>
+</span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;num_zero: %i\n&quot;</span><span class="p">,</span><span class="n">num_zero</span><span class="p">);</span>
 </span><span id="__span-0-83"><a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>
-</span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>if opt_enum==1
-</span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>    fprintf(&quot;twosite opt\n&quot;);
-</span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a>end
-</span><span id="__span-0-87"><a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>if opt_enum==2
-</span><span id="__span-0-88"><a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>    fprintf(&quot;shrewd cbe opt\n&quot;);
-</span><span id="__span-0-89"><a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a>end
-</span><span id="__span-0-90"><a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a>fprintf(&quot;\n\n&quot;);
+</span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a><span class="k">if</span><span class="w"> </span><span class="n">opt_enum</span><span class="o">==</span><span class="mi">1</span>
+</span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a><span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;twosite opt\n&quot;</span><span class="p">);</span>
+</span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a><span class="k">end</span>
+</span><span id="__span-0-87"><a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a><span class="k">if</span><span class="w"> </span><span class="n">opt_enum</span><span class="o">==</span><span class="mi">2</span>
+</span><span id="__span-0-88"><a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a><span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;shrewd cbe opt\n&quot;</span><span class="p">);</span>
+</span><span id="__span-0-89"><a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a><span class="k">end</span>
+</span><span id="__span-0-90"><a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;\n\n&quot;</span><span class="p">);</span>
 </span><span id="__span-0-91"><a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a>
-</span><span id="__span-0-92"><a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>% contract from right to left in the beginning
-</span><span id="__span-0-93"><a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a>for i=(N:-1:3)
-</span><span id="__span-0-94"><a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a>    network.env_contract(i,i+1);
-</span><span id="__span-0-95"><a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a>end
+</span><span id="__span-0-92"><a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a><span class="c">% contract from right to left in the beginning</span>
+</span><span id="__span-0-93"><a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="p">=(</span><span class="n">N</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span>
+</span><span id="__span-0-94"><a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a><span class="w">    </span><span class="n">network</span><span class="p">.</span><span class="n">env_contract</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">i</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-0-95"><a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a><span class="k">end</span>
 </span><span id="__span-0-96"><a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a>
-</span><span id="__span-0-97"><a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a>if opt_enum==1
-</span><span id="__span-0-98"><a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a>    % sweep and optimize twosite
-</span><span id="__span-0-99"><a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a>    for i=(1:num_sweeps)
-</span><span id="__span-0-100"><a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a>        network.twosite_sweep(i);
-</span><span id="__span-0-101"><a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a>        network.print_time();
-</span><span id="__span-0-102"><a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a>        pid = sprintf(&#39;%i&#39;,feature(&#39;getpid&#39;));
-</span><span id="__span-0-103"><a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a>        [tmp mem_usage] = system([&#39;cat /proc/&#39; pid &#39;/status | grep VmRSS&#39;]);
-</span><span id="__span-0-104"><a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a>        fprintf(&quot;RSS: %i MB\n&quot;, round(str2num(strtrim(extractAfter(extractBefore(mem_usage, &#39; kB&#39;), &#39;:&#39;))) / 1000));
-</span><span id="__span-0-105"><a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a>        [tmp mem_usage] = system([&#39;cat /proc/&#39; pid &#39;/status | grep VmHWM&#39;]);
-</span><span id="__span-0-106"><a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a>        fprintf(&quot;Peak RSS: %i MB\n\n&quot;, round(str2num(strtrim(extractAfter(extractBefore(mem_usage, &#39; kB&#39;), &#39;:&#39;))) / 1000));
-</span><span id="__span-0-107"><a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a>    end
-</span><span id="__span-0-108"><a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a>else
-</span><span id="__span-0-109"><a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a>    % sweep and optimize cbe-onesite
-</span><span id="__span-0-110"><a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a>    for i=(1:num_sweeps)
-</span><span id="__span-0-111"><a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a>        network.cbe_sweep(i);
-</span><span id="__span-0-112"><a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a>        network.print_time();
-</span><span id="__span-0-113"><a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a>        pid = sprintf(&#39;%i&#39;,feature(&#39;getpid&#39;));
-</span><span id="__span-0-114"><a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a>        [tmp mem_usage] = system([&#39;cat /proc/&#39; pid &#39;/status | grep VmRSS&#39;]);
-</span><span id="__span-0-115"><a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a>        fprintf(&quot;RSS: %i MB\n&quot;, round(str2num(strtrim(extractAfter(extractBefore(mem_usage, &#39; kB&#39;), &#39;:&#39;))) / 1000));
-</span><span id="__span-0-116"><a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a>        [tmp mem_usage] = system([&#39;cat /proc/&#39; pid &#39;/status | grep VmHWM&#39;]);
-</span><span id="__span-0-117"><a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a>        fprintf(&quot;Peak RSS: %i MB\n\n&quot;, round(str2num(strtrim(extractAfter(extractBefore(mem_usage, &#39; kB&#39;), &#39;:&#39;))) / 1000));
-</span><span id="__span-0-118"><a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a>    end
-</span><span id="__span-0-119"><a id="__codelineno-0-119" name="__codelineno-0-119" href="#__codelineno-0-119"></a>end
+</span><span id="__span-0-97"><a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a><span class="k">if</span><span class="w"> </span><span class="n">opt_enum</span><span class="o">==</span><span class="mi">1</span>
+</span><span id="__span-0-98"><a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a><span class="w">    </span><span class="c">% sweep and optimize twosite</span>
+</span><span id="__span-0-99"><a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="p">=(</span><span class="mi">1</span><span class="p">:</span><span class="n">num_sweeps</span><span class="p">)</span>
+</span><span id="__span-0-100"><a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a><span class="w">        </span><span class="n">network</span><span class="p">.</span><span class="n">twosite_sweep</span><span class="p">(</span><span class="nb">i</span><span class="p">);</span>
+</span><span id="__span-0-101"><a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a><span class="w">        </span><span class="n">network</span><span class="p">.</span><span class="n">print_time</span><span class="p">();</span>
+</span><span id="__span-0-102"><a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a><span class="w">        </span><span class="n">pid</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;%i&#39;</span><span class="p">,</span><span class="n">feature</span><span class="p">(</span><span class="s">&#39;getpid&#39;</span><span class="p">));</span>
+</span><span id="__span-0-103"><a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a><span class="w">        </span><span class="p">[</span><span class="n">tmp</span><span class="w"> </span><span class="n">mem_usage</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">system</span><span class="p">([</span><span class="s">&#39;cat /proc/&#39;</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="s">&#39;/status | grep VmRSS&#39;</span><span class="p">]);</span>
+</span><span id="__span-0-104"><a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a><span class="w">        </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;RSS: %i MB\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">round</span><span class="p">(</span><span class="nb">str2num</span><span class="p">(</span><span class="nb">strtrim</span><span class="p">(</span><span class="nb">extractAfter</span><span class="p">(</span><span class="nb">extractBefore</span><span class="p">(</span><span class="n">mem_usage</span><span class="p">,</span><span class="w"> </span><span class="s">&#39; kB&#39;</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="p">)))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="p">));</span>
+</span><span id="__span-0-105"><a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a><span class="w">        </span><span class="p">[</span><span class="n">tmp</span><span class="w"> </span><span class="n">mem_usage</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">system</span><span class="p">([</span><span class="s">&#39;cat /proc/&#39;</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="s">&#39;/status | grep VmHWM&#39;</span><span class="p">]);</span>
+</span><span id="__span-0-106"><a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a><span class="w">        </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;Peak RSS: %i MB\n\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">round</span><span class="p">(</span><span class="nb">str2num</span><span class="p">(</span><span class="nb">strtrim</span><span class="p">(</span><span class="nb">extractAfter</span><span class="p">(</span><span class="nb">extractBefore</span><span class="p">(</span><span class="n">mem_usage</span><span class="p">,</span><span class="w"> </span><span class="s">&#39; kB&#39;</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="p">)))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="p">));</span>
+</span><span id="__span-0-107"><a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a><span class="w">    </span><span class="k">end</span>
+</span><span id="__span-0-108"><a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a><span class="k">else</span>
+</span><span id="__span-0-109"><a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a><span class="w">    </span><span class="c">% sweep and optimize cbe-onesite</span>
+</span><span id="__span-0-110"><a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="p">=(</span><span class="mi">1</span><span class="p">:</span><span class="n">num_sweeps</span><span class="p">)</span>
+</span><span id="__span-0-111"><a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a><span class="w">        </span><span class="n">network</span><span class="p">.</span><span class="n">cbe_sweep</span><span class="p">(</span><span class="nb">i</span><span class="p">);</span>
+</span><span id="__span-0-112"><a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a><span class="w">        </span><span class="n">network</span><span class="p">.</span><span class="n">print_time</span><span class="p">();</span>
+</span><span id="__span-0-113"><a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a><span class="w">        </span><span class="n">pid</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;%i&#39;</span><span class="p">,</span><span class="n">feature</span><span class="p">(</span><span class="s">&#39;getpid&#39;</span><span class="p">));</span>
+</span><span id="__span-0-114"><a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a><span class="w">        </span><span class="p">[</span><span class="n">tmp</span><span class="w"> </span><span class="n">mem_usage</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">system</span><span class="p">([</span><span class="s">&#39;cat /proc/&#39;</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="s">&#39;/status | grep VmRSS&#39;</span><span class="p">]);</span>
+</span><span id="__span-0-115"><a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a><span class="w">        </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;RSS: %i MB\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">round</span><span class="p">(</span><span class="nb">str2num</span><span class="p">(</span><span class="nb">strtrim</span><span class="p">(</span><span class="nb">extractAfter</span><span class="p">(</span><span class="nb">extractBefore</span><span class="p">(</span><span class="n">mem_usage</span><span class="p">,</span><span class="w"> </span><span class="s">&#39; kB&#39;</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="p">)))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="p">));</span>
+</span><span id="__span-0-116"><a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a><span class="w">        </span><span class="p">[</span><span class="n">tmp</span><span class="w"> </span><span class="n">mem_usage</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">system</span><span class="p">([</span><span class="s">&#39;cat /proc/&#39;</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="s">&#39;/status | grep VmHWM&#39;</span><span class="p">]);</span>
+</span><span id="__span-0-117"><a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a><span class="w">        </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;Peak RSS: %i MB\n\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">round</span><span class="p">(</span><span class="nb">str2num</span><span class="p">(</span><span class="nb">strtrim</span><span class="p">(</span><span class="nb">extractAfter</span><span class="p">(</span><span class="nb">extractBefore</span><span class="p">(</span><span class="n">mem_usage</span><span class="p">,</span><span class="w"> </span><span class="s">&#39; kB&#39;</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="p">)))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="p">));</span>
+</span><span id="__span-0-118"><a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a><span class="w">    </span><span class="k">end</span>
+</span><span id="__span-0-119"><a id="__codelineno-0-119" name="__codelineno-0-119" href="#__codelineno-0-119"></a><span class="k">end</span>
 </span></code></pre></div>
 
 

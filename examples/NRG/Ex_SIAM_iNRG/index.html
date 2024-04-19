@@ -12,7 +12,7 @@
         <link rel="prev" href="../Ex_SIAM/">
       
       
-        <link rel="next" href="../../DMRG/DMRGHubbard2D/">
+        <link rel="next" href="../NRG_Eflow/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -839,6 +839,90 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NRG_Eflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NRG Energy Flow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NRG_Kondo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NRG for SIKM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NRG_Kondo_Thermal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SIKM Thermal Properties
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NRG_SpecFunc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NRG for Spectral Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1171,108 +1255,108 @@
 
   <h1>iNRG for SIAM</h1>
 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>% iNRG example of SIAM; break spin symmetry
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c">% iNRG example of SIAM; break spin symmetry</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>clear
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">clear</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>num_threads_SL(10);
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">num_threads_SL</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>% Hamiltonian parameter
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>U = 0.3;
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>epsd = -U/2;
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>Gamma = 0.1;
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>T = 1e-5;
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c">% Hamiltonian parameter</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">U</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.3</span><span class="p">;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">epsd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="n">U</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">Gamma</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">T</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e-5</span><span class="p">;</span>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>% NRG parameter
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>Lambda = 2;
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>N = max(ceil(-2*log(T)/log(Lambda))+7,20);
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>nz = 2;
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>inrg = [1 2]; % order of iNRG sub-channels
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>% inrg = [2 1];
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>Nkeep = 1500;
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>ETRUNC = inf(10,1);
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>Etrunc = 10;
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>nrgdata = go(&#39;data/NRG/NRG&#39;);
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c">% NRG parameter</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">Lambda</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">ceil</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="nb">log</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="nb">log</span><span class="p">(</span><span class="n">Lambda</span><span class="p">))</span><span class="o">+</span><span class="mi">7</span><span class="p">,</span><span class="mi">20</span><span class="p">);</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">nz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">inrg</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">];</span><span class="w"> </span><span class="c">% order of iNRG sub-channels</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="c">% inrg = [2 1];</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="n">Nkeep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1500</span><span class="p">;</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="n">ETRUNC</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">inf</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="n">Etrunc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="n">nrgdata</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">go</span><span class="p">(</span><span class="s">&#39;data/NRG/NRG&#39;</span><span class="p">);</span>
 </span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>% Define operators
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>[FF,ZF,SF,IF] = getLocalSpace(&#39;FermionS&#39;,&#39;Acharge,Aspin&#39;,&#39;NC&#39;,1);
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>[FF,ZF,EF] = setItag(&#39;s00&#39;,&#39;op&#39;,FF,ZF,IF.E);
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="c">% Define operators</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="p">[</span><span class="n">FF</span><span class="p">,</span><span class="n">ZF</span><span class="p">,</span><span class="n">SF</span><span class="p">,</span><span class="n">IF</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getLocalSpace</span><span class="p">(</span><span class="s">&#39;FermionS&#39;</span><span class="p">,</span><span class="s">&#39;Acharge,Aspin&#39;</span><span class="p">,</span><span class="s">&#39;NC&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="p">[</span><span class="n">FF</span><span class="p">,</span><span class="n">ZF</span><span class="p">,</span><span class="n">EF</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">setItag</span><span class="p">(</span><span class="s">&#39;s00&#39;</span><span class="p">,</span><span class="s">&#39;op&#39;</span><span class="p">,</span><span class="n">FF</span><span class="p">,</span><span class="n">ZF</span><span class="p">,</span><span class="n">IF</span><span class="p">.</span><span class="n">E</span><span class="p">);</span>
 </span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>% impurity Hamiltonian
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>NF = QSpace;
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>for ito = (1:2)
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    NF(ito) = contract(FF(ito),&#39;!2*&#39;,FF(ito));
-</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>end
-</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>HU = (U/2)*sum(NF)*(sum(NF)-1);
-</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>H00 = HU + epsd*sum(NF) + 1e-30*EF;
-</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>A0 = getIdentity(setItag(&#39;L00&#39;,getvac(EF)),2,EF,2,&#39;A00*&#39;,[1 3 2]);
-</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>H0 = contract(A0,&#39;!2*&#39;,{H00,&#39;!1&#39;,A0});
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="c">% impurity Hamiltonian</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="n">NF</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">QSpace</span><span class="p">;</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="k">for</span><span class="w"> </span><span class="n">ito</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="n">NF</span><span class="p">(</span><span class="n">ito</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">contract</span><span class="p">(</span><span class="n">FF</span><span class="p">(</span><span class="n">ito</span><span class="p">),</span><span class="s">&#39;!2*&#39;</span><span class="p">,</span><span class="n">FF</span><span class="p">(</span><span class="n">ito</span><span class="p">));</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="k">end</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="n">HU</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">U</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="nb">sum</span><span class="p">(</span><span class="n">NF</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">NF</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="n">H00</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">HU</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">epsd</span><span class="o">*</span><span class="nb">sum</span><span class="p">(</span><span class="n">NF</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1e-30</span><span class="o">*</span><span class="n">EF</span><span class="p">;</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="n">A0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getIdentity</span><span class="p">(</span><span class="n">setItag</span><span class="p">(</span><span class="s">&#39;L00&#39;</span><span class="p">,</span><span class="n">getvac</span><span class="p">(</span><span class="n">EF</span><span class="p">)),</span><span class="mi">2</span><span class="p">,</span><span class="n">EF</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s">&#39;A00*&#39;</span><span class="p">,[</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">2</span><span class="p">]);</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="n">H0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">contract</span><span class="p">(</span><span class="n">A0</span><span class="p">,</span><span class="s">&#39;!2*&#39;</span><span class="p">,{</span><span class="n">H00</span><span class="p">,</span><span class="s">&#39;!1&#39;</span><span class="p">,</span><span class="n">A0</span><span class="p">});</span>
 </span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>
-</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>FHU = QSpace; % [FF,HU], to compute the correlator &lt; [d,H_U] || d&#39; &gt;
-</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>for ito = (1:2)
-</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>    FHU(ito) = contract(FF(ito),&#39;!1&#39;,HU,[1 3 2])-contract(HU,&#39;!1&#39;,FF(ito));
-</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>end
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="n">FHU</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">QSpace</span><span class="p">;</span><span class="w"> </span><span class="c">% [FF,HU], to compute the correlator &lt; [d,H_U] || d&#39; &gt;</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="k">for</span><span class="w"> </span><span class="n">ito</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">    </span><span class="n">FHU</span><span class="p">(</span><span class="n">ito</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">contract</span><span class="p">(</span><span class="n">FF</span><span class="p">(</span><span class="n">ito</span><span class="p">),</span><span class="s">&#39;!1&#39;</span><span class="p">,</span><span class="n">HU</span><span class="p">,[</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">2</span><span class="p">])</span><span class="o">-</span><span class="n">contract</span><span class="p">(</span><span class="n">HU</span><span class="p">,</span><span class="s">&#39;!1&#39;</span><span class="p">,</span><span class="n">FF</span><span class="p">(</span><span class="n">ito</span><span class="p">));</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="k">end</span>
 </span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>
-</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>% Operators within the bath
-</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>[Fp,Zp] = singleFZ(FF,ZF);
-</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>% NOTE: Input array of Z operators for NRG_SL should have one-to-one
-</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>% correspondence to the iNRG sub-channels (NOT to particle flavors). That
-</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>% is, Z(n) corresponds to the n-th sub-channel that contains ALL the
-</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>% particle flavors j such that iflag(j) == n. If a sub-channel contains
-</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>% more than one flavor, one may use &#39;chainSpace&#39; routine to generate the Z
-</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>% operator for the sub-channel.
-</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>Zp2 = QSpace(1,max(inrg));
-</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>for ito = (1:max(inrg))
-</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>    oktmp = (inrg == ito);
-</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>    if sum(oktmp) == 1
-</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>        Zp2(ito) = Zp(inrg == ito);
-</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>    elseif sum(oktmp) &gt; 1
-</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>        [~,Zp2(ito)] = chainSpace(Fp(oktmp),(1:sum(oktmp)),Zp(oktmp));
-</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>    else
-</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>        error([&#39;ERR: no Z operator for iNRG sub-channel #&#39;,sprintf(&#39;%i&#39;,ito)]);
-</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>    end
-</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>end
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="c">% Operators within the bath</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="p">[</span><span class="n">Fp</span><span class="p">,</span><span class="n">Zp</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">singleFZ</span><span class="p">(</span><span class="n">FF</span><span class="p">,</span><span class="n">ZF</span><span class="p">);</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="c">% NOTE: Input array of Z operators for NRG_SL should have one-to-one</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="c">% correspondence to the iNRG sub-channels (NOT to particle flavors). That</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="c">% is, Z(n) corresponds to the n-th sub-channel that contains ALL the</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="c">% particle flavors j such that iflag(j) == n. If a sub-channel contains</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="c">% more than one flavor, one may use &#39;chainSpace&#39; routine to generate the Z</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="c">% operator for the sub-channel.</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="n">Zp2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">QSpace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">max</span><span class="p">(</span><span class="n">inrg</span><span class="p">));</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="k">for</span><span class="w"> </span><span class="n">ito</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="nb">max</span><span class="p">(</span><span class="n">inrg</span><span class="p">))</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">    </span><span class="n">oktmp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">inrg</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ito</span><span class="p">);</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">oktmp</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">        </span><span class="n">Zp2</span><span class="p">(</span><span class="n">ito</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Zp</span><span class="p">(</span><span class="n">inrg</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ito</span><span class="p">);</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="w">    </span><span class="k">elseif</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">oktmp</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">        </span><span class="p">[</span><span class="o">~</span><span class="p">,</span><span class="n">Zp2</span><span class="p">(</span><span class="n">ito</span><span class="p">)]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">chainSpace</span><span class="p">(</span><span class="n">Fp</span><span class="p">(</span><span class="n">oktmp</span><span class="p">),(</span><span class="mi">1</span><span class="p">:</span><span class="nb">sum</span><span class="p">(</span><span class="n">oktmp</span><span class="p">)),</span><span class="n">Zp</span><span class="p">(</span><span class="n">oktmp</span><span class="p">));</span>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">    </span><span class="k">else</span>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">        </span><span class="nb">error</span><span class="p">([</span><span class="s">&#39;ERR: no Z operator for iNRG sub-channel #&#39;</span><span class="p">,</span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;%i&#39;</span><span class="p">,</span><span class="n">ito</span><span class="p">)]);</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="w">    </span><span class="k">end</span>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="k">end</span>
 </span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>
-</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>[ff,~,dff] = doZLD([-1 1],(Gamma/pi)*ones(2,max(inrg)),Lambda,N,nz,&#39;inrg&#39;,inrg);
-</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>Adisc11 = cell(1,1,nz); % spin-up, &lt; d || d&#39; &gt;
-</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>Adisc12 = cell(1,1,nz); % spin-down, &lt; d || d&#39; &gt;
-</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>Adisc21 = cell(1,1,nz); % spin-up, &lt; [d,H_U] || d&#39; &gt;
-</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>Adisc22 = cell(1,1,nz); % spin-down, &lt; [d,H_U] || d&#39; &gt;
+</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="p">[</span><span class="n">ff</span><span class="p">,</span><span class="o">~</span><span class="p">,</span><span class="n">dff</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">doZLD</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">],(</span><span class="n">Gamma</span><span class="o">/</span><span class="nb">pi</span><span class="p">)</span><span class="o">*</span><span class="nb">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="nb">max</span><span class="p">(</span><span class="n">inrg</span><span class="p">)),</span><span class="n">Lambda</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="s">&#39;inrg&#39;</span><span class="p">,</span><span class="n">inrg</span><span class="p">);</span>
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="n">Adisc11</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cell</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">nz</span><span class="p">);</span><span class="w"> </span><span class="c">% spin-up, &lt; d || d&#39; &gt;</span>
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="n">Adisc12</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cell</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">nz</span><span class="p">);</span><span class="w"> </span><span class="c">% spin-down, &lt; d || d&#39; &gt;</span>
+</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="n">Adisc21</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cell</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">nz</span><span class="p">);</span><span class="w"> </span><span class="c">% spin-up, &lt; [d,H_U] || d&#39; &gt;</span>
+</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="n">Adisc22</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cell</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">nz</span><span class="p">);</span><span class="w"> </span><span class="c">% spin-down, &lt; [d,H_U] || d&#39; &gt;</span>
 </span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>
-</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>for itz = (1:nz)
-</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>    NRG_SL(nrgdata,H0,A0,Lambda,ff{itz},Fp,Zp2, ...
-</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>        &#39;Nkeep&#39;,Nkeep,&#39;ETRUNC&#39;,ETRUNC,&#39;Etrunc&#39;,Etrunc,&#39;F0&#39;,FF,&#39;iflag&#39;,inrg,&#39;dff&#39;,dff{itz});
-</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>    if itz == nz
-</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>        [Es,Qs] = plotE(nrgdata,&#39;noshow&#39;);
-</span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>        plotE(Es(1:2:end),Qs(1:2:end));
-</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>    end
-</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>    getRhoFDM(nrgdata,T,&#39;-v&#39;);
-</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>    [odisc,Adiscz,sigmak] = getAdisc(nrgdata,[FF(:);FHU(:)],[FF(:);FF(:)],ZF);
-</span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>    Adisc11{itz} = Adiscz{1};
-</span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>    Adisc12{itz} = Adiscz{2};
-</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>    Adisc21{itz} = Adiscz{3};
-</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>    Adisc22{itz} = Adiscz{4};
-</span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>end
+</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="k">for</span><span class="w"> </span><span class="n">itz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nz</span><span class="p">)</span>
+</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="w">    </span><span class="n">NRG_SL</span><span class="p">(</span><span class="n">nrgdata</span><span class="p">,</span><span class="n">H0</span><span class="p">,</span><span class="n">A0</span><span class="p">,</span><span class="n">Lambda</span><span class="p">,</span><span class="n">ff</span><span class="p">{</span><span class="n">itz</span><span class="p">},</span><span class="n">Fp</span><span class="p">,</span><span class="n">Zp2</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="w">        </span><span class="s">&#39;Nkeep&#39;</span><span class="p">,</span><span class="n">Nkeep</span><span class="p">,</span><span class="s">&#39;ETRUNC&#39;</span><span class="p">,</span><span class="n">ETRUNC</span><span class="p">,</span><span class="s">&#39;Etrunc&#39;</span><span class="p">,</span><span class="n">Etrunc</span><span class="p">,</span><span class="s">&#39;F0&#39;</span><span class="p">,</span><span class="n">FF</span><span class="p">,</span><span class="s">&#39;iflag&#39;</span><span class="p">,</span><span class="n">inrg</span><span class="p">,</span><span class="s">&#39;dff&#39;</span><span class="p">,</span><span class="n">dff</span><span class="p">{</span><span class="n">itz</span><span class="p">});</span>
+</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">itz</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nz</span>
+</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="w">        </span><span class="p">[</span><span class="n">Es</span><span class="p">,</span><span class="n">Qs</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">plotE</span><span class="p">(</span><span class="n">nrgdata</span><span class="p">,</span><span class="s">&#39;noshow&#39;</span><span class="p">);</span>
+</span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="w">        </span><span class="n">plotE</span><span class="p">(</span><span class="n">Es</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">),</span><span class="n">Qs</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">));</span>
+</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="w">    </span><span class="k">end</span>
+</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a><span class="w">    </span><span class="n">getRhoFDM</span><span class="p">(</span><span class="n">nrgdata</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="s">&#39;-v&#39;</span><span class="p">);</span>
+</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="w">    </span><span class="p">[</span><span class="n">odisc</span><span class="p">,</span><span class="n">Adiscz</span><span class="p">,</span><span class="n">sigmak</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getAdisc</span><span class="p">(</span><span class="n">nrgdata</span><span class="p">,[</span><span class="n">FF</span><span class="p">(:);</span><span class="n">FHU</span><span class="p">(:)],[</span><span class="n">FF</span><span class="p">(:);</span><span class="n">FF</span><span class="p">(:)],</span><span class="n">ZF</span><span class="p">);</span>
+</span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="w">    </span><span class="n">Adisc11</span><span class="p">{</span><span class="n">itz</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Adiscz</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+</span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="w">    </span><span class="n">Adisc12</span><span class="p">{</span><span class="n">itz</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Adiscz</span><span class="p">{</span><span class="mi">2</span><span class="p">};</span>
+</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a><span class="w">    </span><span class="n">Adisc21</span><span class="p">{</span><span class="n">itz</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Adiscz</span><span class="p">{</span><span class="mi">3</span><span class="p">};</span>
+</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a><span class="w">    </span><span class="n">Adisc22</span><span class="p">{</span><span class="n">itz</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Adiscz</span><span class="p">{</span><span class="mi">4</span><span class="p">};</span>
+</span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a><span class="k">end</span>
 </span><span id="__span-0-83"><a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>
-</span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>Adisc11avg = mean(cell2mat(Adisc11),3);
-</span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>Adisc12avg = mean(cell2mat(Adisc12),3);
-</span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a>Adisc21avg = mean(cell2mat(Adisc21),3);
-</span><span id="__span-0-87"><a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>Adisc22avg = mean(cell2mat(Adisc22),3);
+</span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a><span class="n">Adisc11avg</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">mean</span><span class="p">(</span><span class="nb">cell2mat</span><span class="p">(</span><span class="n">Adisc11</span><span class="p">),</span><span class="mi">3</span><span class="p">);</span>
+</span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a><span class="n">Adisc12avg</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">mean</span><span class="p">(</span><span class="nb">cell2mat</span><span class="p">(</span><span class="n">Adisc12</span><span class="p">),</span><span class="mi">3</span><span class="p">);</span>
+</span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a><span class="n">Adisc21avg</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">mean</span><span class="p">(</span><span class="nb">cell2mat</span><span class="p">(</span><span class="n">Adisc21</span><span class="p">),</span><span class="mi">3</span><span class="p">);</span>
+</span><span id="__span-0-87"><a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a><span class="n">Adisc22avg</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">mean</span><span class="p">(</span><span class="nb">cell2mat</span><span class="p">(</span><span class="n">Adisc22</span><span class="p">),</span><span class="mi">3</span><span class="p">);</span>
 </span><span id="__span-0-88"><a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>
-</span><span id="__span-0-89"><a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a>[ocont,Acont11] = getAcont(odisc,Adisc11avg,sigmak,T/10,&#39;-v&#39;,&#39;alphaz&#39;,1/nz);
-</span><span id="__span-0-90"><a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a>[~    ,Acont12] = getAcont(odisc,Adisc12avg,sigmak,T/10,&#39;-v&#39;,&#39;alphaz&#39;,1/nz);
-</span><span id="__span-0-91"><a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a>[~    ,Acont21] = getAcont(odisc,Adisc21avg,sigmak,T/10,&#39;-v&#39;,&#39;alphaz&#39;,1/nz);
-</span><span id="__span-0-92"><a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>[~    ,Acont22] = getAcont(odisc,Adisc22avg,sigmak,T/10,&#39;-v&#39;,&#39;alphaz&#39;,1/nz);
+</span><span id="__span-0-89"><a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a><span class="p">[</span><span class="n">ocont</span><span class="p">,</span><span class="n">Acont11</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getAcont</span><span class="p">(</span><span class="n">odisc</span><span class="p">,</span><span class="n">Adisc11avg</span><span class="p">,</span><span class="n">sigmak</span><span class="p">,</span><span class="n">T</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span><span class="s">&#39;-v&#39;</span><span class="p">,</span><span class="s">&#39;alphaz&#39;</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="n">nz</span><span class="p">);</span>
+</span><span id="__span-0-90"><a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a><span class="p">[</span><span class="o">~</span><span class="w">    </span><span class="p">,</span><span class="n">Acont12</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getAcont</span><span class="p">(</span><span class="n">odisc</span><span class="p">,</span><span class="n">Adisc12avg</span><span class="p">,</span><span class="n">sigmak</span><span class="p">,</span><span class="n">T</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span><span class="s">&#39;-v&#39;</span><span class="p">,</span><span class="s">&#39;alphaz&#39;</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="n">nz</span><span class="p">);</span>
+</span><span id="__span-0-91"><a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a><span class="p">[</span><span class="o">~</span><span class="w">    </span><span class="p">,</span><span class="n">Acont21</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getAcont</span><span class="p">(</span><span class="n">odisc</span><span class="p">,</span><span class="n">Adisc21avg</span><span class="p">,</span><span class="n">sigmak</span><span class="p">,</span><span class="n">T</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span><span class="s">&#39;-v&#39;</span><span class="p">,</span><span class="s">&#39;alphaz&#39;</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="n">nz</span><span class="p">);</span>
+</span><span id="__span-0-92"><a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a><span class="p">[</span><span class="o">~</span><span class="w">    </span><span class="p">,</span><span class="n">Acont22</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getAcont</span><span class="p">(</span><span class="n">odisc</span><span class="p">,</span><span class="n">Adisc22avg</span><span class="p">,</span><span class="n">sigmak</span><span class="p">,</span><span class="n">T</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span><span class="s">&#39;-v&#39;</span><span class="p">,</span><span class="s">&#39;alphaz&#39;</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="n">nz</span><span class="p">);</span>
 </span><span id="__span-0-93"><a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a>
-</span><span id="__span-0-94"><a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a>[SE,Aimp] = SEtrick(ocont,(Acont11+Acont12)/2,(Acont21+Acont22)/2, ...
-</span><span id="__span-0-95"><a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a>    &#39;ozin&#39;,[-1;1],&#39;RhoV2in&#39;,(Gamma/pi)*[1;1],&#39;epsd&#39;,epsd);
+</span><span id="__span-0-94"><a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a><span class="p">[</span><span class="n">SE</span><span class="p">,</span><span class="n">Aimp</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">SEtrick</span><span class="p">(</span><span class="n">ocont</span><span class="p">,(</span><span class="n">Acont11</span><span class="o">+</span><span class="n">Acont12</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,(</span><span class="n">Acont21</span><span class="o">+</span><span class="n">Acont22</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-0-95"><a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a><span class="w">    </span><span class="s">&#39;ozin&#39;</span><span class="p">,[</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="mi">1</span><span class="p">],</span><span class="s">&#39;RhoV2in&#39;</span><span class="p">,(</span><span class="n">Gamma</span><span class="o">/</span><span class="nb">pi</span><span class="p">)</span><span class="o">*</span><span class="p">[</span><span class="mi">1</span><span class="p">;</span><span class="mi">1</span><span class="p">],</span><span class="s">&#39;epsd&#39;</span><span class="p">,</span><span class="n">epsd</span><span class="p">);</span>
 </span><span id="__span-0-96"><a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a>
-</span><span id="__span-0-97"><a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a>figure;
-</span><span id="__span-0-98"><a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a>plot(ocont,[Acont11 Acont12 Aimp]*(pi*Gamma));
-</span><span id="__span-0-99"><a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a>xlim([0 1]);
-</span><span id="__span-0-100"><a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a>set(gca,&#39;XScale&#39;,&#39;log&#39;);
-</span><span id="__span-0-101"><a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a>grid on;
-</span><span id="__span-0-102"><a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a>legend({&#39;Bare (spin-up)&#39;,&#39;Bare (spin-down)&#39;,&#39;Improved (spin-averaged)&#39;});
+</span><span id="__span-0-97"><a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a><span class="nb">figure</span><span class="p">;</span>
+</span><span id="__span-0-98"><a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a><span class="nb">plot</span><span class="p">(</span><span class="n">ocont</span><span class="p">,[</span><span class="n">Acont11</span><span class="w"> </span><span class="n">Acont12</span><span class="w"> </span><span class="n">Aimp</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="n">Gamma</span><span class="p">));</span>
+</span><span id="__span-0-99"><a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a><span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="p">]);</span>
+</span><span id="__span-0-100"><a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a><span class="nb">set</span><span class="p">(</span><span class="nb">gca</span><span class="p">,</span><span class="s">&#39;XScale&#39;</span><span class="p">,</span><span class="s">&#39;log&#39;</span><span class="p">);</span>
+</span><span id="__span-0-101"><a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a><span class="n">grid</span><span class="w"> </span><span class="s">on</span><span class="p">;</span>
+</span><span id="__span-0-102"><a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a><span class="nb">legend</span><span class="p">({</span><span class="s">&#39;Bare (spin-up)&#39;</span><span class="p">,</span><span class="s">&#39;Bare (spin-down)&#39;</span><span class="p">,</span><span class="s">&#39;Improved (spin-averaged)&#39;</span><span class="p">});</span>
 </span></code></pre></div>
 
 
