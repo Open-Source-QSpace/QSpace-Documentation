@@ -16,6 +16,8 @@ nav:
       - "Spinless 2-Channel Impurity": examples/NRG/Ex_NonDiag.md
       - "NRG for SIAM": examples/NRG/Ex_SIAM.md
       - "iNRG for SIAM": examples/NRG/Ex_SIAM_iNRG.md
+    - DMRG Examples:
+      - "2D Hubbard Model": examples/DMRG/DMRGHubbard2D.md
   - Reference:
     - getLocalSpace: reference/getLocalSpace.md
     - contractQS: reference/contractQS.md
