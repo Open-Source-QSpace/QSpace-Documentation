@@ -1,6 +1,6 @@
 Complete source code can be downloaded from [DMRG](./DMRGHubbard2D.zip).
 
-```
+```matlab
 clear;
 
 %%% begin input parameters %%%

@@ -16,6 +16,10 @@ nav:
       - "Spinless 2-Channel Impurity": examples/NRG/Ex_NonDiag.md
       - "NRG for SIAM": examples/NRG/Ex_SIAM.md
       - "iNRG for SIAM": examples/NRG/Ex_SIAM_iNRG.md
+      - "NRG Energy Flow": examples/NRG/NRG_Eflow.md
+      - "NRG for SIKM": examples/NRG/NRG_Kondo.md
+      - "SIKM Thermal Properties": examples/NRG/NRG_Kondo_Thermal.md
+      - "NRG for Spectral Functions": examples/NRG/NRG_SpecFunc.md
     - DMRG Examples:
       - "2D Hubbard Model": examples/DMRG/DMRGHubbard2D.md
   - Reference:

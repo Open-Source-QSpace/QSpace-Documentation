@@ -1,4 +1,4 @@
-```
+```matlab
 % NRG calculation of spin-1/2 1-channel Kondo
 
 clear

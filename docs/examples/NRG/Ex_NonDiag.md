@@ -1,4 +1,4 @@
-```
+```matlab
 % Example: NRG calculation of an impurity model of spinless fermions in two
 % channels. Partcles can hop between the channels, leading to the
 % off-diagonal elements of the quadratic term at the impurity and of the
