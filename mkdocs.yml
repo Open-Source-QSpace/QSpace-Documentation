@@ -5,10 +5,12 @@ nav:
     - What is QSpace?: index.md
     - Installation:
       - "Install on Linux": Linux.md
-      - "Install on macOS": macOS.md
   - Tutorial:
     - "Get to Know QSpace": tutorial/QSpace_intro.md
     - "Starting Point: getLocalSpace": tutorial/getLocalSpace.md
+    - "NRG-1: Energy Flow": tutorial/NRG1_Energy_Flow.md
+    - "NRG-2: Impurity Contribution  to Thermaldynamic  Properties": tutorial/NRG2_ImpThermo.md
+    - "NRG-3: Impurity Spectral Function": tutorial/NRG3_ImpSpec.md
   - Examples:
     - Iterative Diagonalization: iterdiag.md
     - NRG Examples: 
