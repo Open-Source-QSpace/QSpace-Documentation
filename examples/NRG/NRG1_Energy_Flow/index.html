@@ -1,0 +1,1751 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../../iterdiag/">
+      
+      
+        <link rel="next" href="../NRG_Kondo/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
+    
+    
+      
+        <title>NRG-1: Energy Flow - QSpace Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h224V368c0-26.5 21.5-48 48-48h112V96c0-35.3-28.7-64-64-64H64zm384 320H336c-8.8 0-16 7.2-16 16v112l32-32 64-64 32-32z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M96 0C43 0 0 43 0 96v320c0 53 43 96 96 96h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H96zm0 384h256v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zm-40-176h24v-64h-24c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M480 32c0-12.9-7.8-24.6-19.8-29.6S434.5.2 425.3 9.3L381.7 53c-48 48-113.1 75-181 75H64c-35.3 0-64 28.7-64 64v96c0 35.3 28.7 64 64 64v128c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32V352h8.7c67.9 0 133 27 181 75l43.6 43.6c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V300.4c18.6-8.8 32-32.5 32-60.4s-13.4-51.6-32-60.4V32zm-64 76.7v262.6C357.2 317.8 280.5 288 200.7 288H192v-96h8.7c79.8 0 156.5-29.8 215.3-83.3z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7l233.4-233.3c12.5-12.5 32.8-12.5 45.3 0z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zm-86.2-346.7c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1 0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6-13.3 0-24-10.7-24-24v-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1 0-8.4-6.8-15.1-15.1-15.1h-58.3c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1-64 0z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7.2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8.2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0-64 0 32 32 0 1 0 64 0z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.1 52.4 442.6 6.5c-1.9-3.9-6.1-6.5-10.5-6.5s-8.5 2.6-10.4 6.5l-16.5 45.9-46 16.8c-4.3 1.6-7.3 5.9-7.2 10.4 0 4.5 3 8.7 7.2 10.2l45.7 16.8 16.8 45.8c1.5 4.4 5.8 7.5 10.4 7.5s8.9-3.1 10.4-7.5l16.5-45.8 45.7-16.8c4.2-1.5 7.2-5.7 7.2-10.2 0-4.6-3-8.9-7.2-10.4l-45.6-16.8zm-132.4 53c-12.5-12.5-32.8-12.5-45.3 0l-2.9 2.9c-22-8-45.8-12.3-70.5-12.3C93.1 96 0 189.1 0 304s93.1 208 208 208 208-93.1 208-208c0-24.7-4.3-48.5-12.2-70.5l2.9-2.9c12.5-12.5 12.5-32.8 0-45.3l-80-80zM200 192c-57.4 0-104 46.6-104 104v8c0 8.8-7.2 16-16 16s-16-7.2-16-16v-8c0-75.1 60.9-136 136-136h8c8.8 0 16 7.2 16 16s-7.2 16-16 16h-8z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 398.9c58.5-41.1 96-104.1 96-174.9C512 100.3 397.4 0 256 0S0 100.3 0 224c0 70.7 37.5 133.8 96 174.9V464c0 26.5 21.5 48 48 48h48v-48c0-8.8 7.2-16 16-16s16 7.2 16 16v48h64v-48c0-8.8 7.2-16 16-16s16 7.2 16 16v48h48c26.5 0 48-21.5 48-48v-65.1zM96 256a64 64 0 1 1 128 0 64 64 0 1 1-128 0zm256-64a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M320 0c17.7 0 32 14.3 32 32v64h120c39.8 0 72 32.2 72 72v272c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72h120V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zM264 256a40 40 0 1 0-80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224h16v192H48c-26.5 0-48-21.5-48-48v-96c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48h-16V224h16z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M288 0H128c-17.7 0-32 14.3-32 32s14.3 32 32 32v132.8c0 11.8-3.3 23.5-9.5 33.5L10.3 406.2C3.6 417.2 0 429.7 0 442.6 0 480.9 31.1 512 69.4 512h309.2c38.3 0 69.4-31.1 69.4-69.4 0-12.8-3.6-25.4-10.3-36.4L329.5 230.4c-6.2-10.1-9.5-21.7-9.5-33.5V64c17.7 0 32-14.3 32-32S337.7 0 320 0h-32zm-96 196.8V64h64v132.8c0 23.7 6.6 46.9 19 67.1l34.5 56.1h-171l34.5-56.1c12.4-20.2 19-43.4 19-67.1z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64h-64c-35.3 0-64-28.7-64-64V216z"/></svg>');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#logarithmic-discretization-of-bath" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="QSpace Documentation" class="md-header__button md-logo" aria-label="QSpace Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            QSpace Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              NRG-1: Energy Flow
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_3" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1M8 13h8v-2H8v2m9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1 0 1.71-1.39 3.1-3.1 3.1h-4V17h4a5 5 0 0 0 5-5 5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5M7 15a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Open-Source-QSpace/QSpace-Documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    QSpace Documentation
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tutorial/QSpace_intro/" class="md-tabs__link">
+          
+  
+  Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../iterdiag/" class="md-tabs__link">
+          
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../reference/getLocalSpace/" class="md-tabs__link">
+          
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../contribg/" class="md-tabs__link">
+          
+  
+  Contribute
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="QSpace Documentation" class="md-nav__button md-logo" aria-label="QSpace Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    QSpace Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Open-Source-QSpace/QSpace-Documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    QSpace Documentation
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Getting started
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Getting started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is QSpace?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Installation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install on Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/QSpace_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Get to Know QSpace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/getLocalSpace/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Starting Point: getLocalSpace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iterdiag/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Iterative Diagonalization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    NRG Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            NRG Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    NRG-1: Energy Flow
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    NRG-1: Energy Flow
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#logarithmic-discretization-of-bath" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logarithmic discretization of bath
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lanczos-tridiagnolization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lanczos tridiagnolization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#energy-flow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Energy flow diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#single-impurity-kondo-model-sikm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single-Impurity Kondo model (SIKM)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NRG_Kondo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NRG for SIKM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NRG_Kondo_Thermal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SIKM Thermal Properties
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NRG_SpecFunc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NRG for Spectral Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    DMRG Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            DMRG Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DMRG/DMRGHubbard2D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2D Hubbard Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/getLocalSpace/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    getLocalSpace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/contractQS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    contractQS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Contribute
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Contribute
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contribg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Contribute
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mdref/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdown Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mkdocsg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MkDocs Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#logarithmic-discretization-of-bath" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logarithmic discretization of bath
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lanczos-tridiagnolization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lanczos tridiagnolization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#energy-flow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Energy flow diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#single-impurity-kondo-model-sikm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single-Impurity Kondo model (SIKM)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Open-Source-QSpace/QSpace-Documentation/edit/main/docs/examples/NRG/NRG1_Energy_Flow.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/Open-Source-QSpace/QSpace-Documentation/raw/main/docs/examples/NRG/NRG1_Energy_Flow.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
+  
+
+
+  <h1>NRG-1: Energy Flow</h1>
+
+<p>Author: QSpace version written by <a href="https://www.theorie.physik.uni-muenchen.de/17ls_th_solidstate_en/members/sci_mem/andreas_gleis/index.html">Andreas Gleis</a></p>
+<p>Numerical renormalization group (NRG) is a method for solving quantum impurity systems. <a href="https://en.wikipedia.org/wiki/Kenneth_G._Wilson_Kenneth">Kenneth G. Wilson</a> has itnvented NRG to solve the Kondo problem which was not solvable then. The invention of NRG, indeed, is a part of his Nobel prize citation. NRG is an ancestor of all numerical methods having "renormalization group" in their names.</p>
+<h2 id="logarithmic-discretization-of-bath"><strong>Logarithmic discretization of bath</strong></h2>
+<p>The starting point of the methods we covered before, such as DMRG and iTEBD, is the Hamiltonian of a system which is already discrete, such as chain. On the other hand, an NRG calculation starts from discretizing the continuous system.</p>
+<p>Here we consider an example of quantum impurity system, where the impurity is a spinful fermionic level and the bath consists of non-interacting spinful fermions. The Hamiltonian is given by</p>
+<div class="arithmatex">\[
+H = H_\mathrm{imp} [ \hat{d}_s, \hat{d}_s^\dagger ] + H_\mathrm{hyb} [ \hat{d}_s, 
+\hat{d}_s^\dagger , \hat{c}_{ks}, \hat{c}_{ks}^\dagger  ] + H_\mathrm{bath} 
+[ \hat{c}_{ks}, \hat{c}_{ks}^\dagger ],
+\]</div>
+<div class="arithmatex">\[
+H_\mathrm{hyb} = \sum_k \sum_{s = {\uparrow},{\downarrow}} v_k (\hat{d}_s^\dagger 
+\hat{c}_{ks} + \hat{c}_{ks}^\dagger \hat{d}_s ),
+\]</div>
+<div class="arithmatex">\[H_\mathrm{bath} = \sum_k \sum_{s = {\uparrow},{\downarrow}} \epsilon_k \hat{c}_{ks}^\dagger 
+\hat{c}_{ks} ,
+\]</div>
+<p>where <span class="arithmatex">\(s = {\uparrow},{\downarrow}\)</span> is spin, <span class="arithmatex">\(\epsilon_k\)</span> is the energy of bath fermion of momentum <span class="arithmatex">\(k\)</span>, and <span class="arithmatex">\(v_k\)</span> is the coupling amplitude between the impurity level (to which a particle of spin <span class="arithmatex">\(s\)</span> is added by applying <span class="arithmatex">\(\hat{d}_s^\dagger\)</span>) and the bath level of momentum <span class="arithmatex">\(k\)</span>. The coupling between the impurity and the bath is characterized by the hybridization function,</p>
+<div class="arithmatex">\[
+\Delta (\omega) = \sum_k v_k^2 \, \delta (\omega - \epsilon_k).
+\]</div>
+<p>In this demonstration, we choose the Anderson impurity and the "box-shaped" hybridization function,</p>
+<div class="arithmatex">\[
+H_\mathrm{imp} = U \hat{n}_{d\uparrow} \hat{n}_{d\downarrow} + \epsilon_d 
+(\hat{n}_{d\uparrow} + \hat{n}_{d\downarrow}) ,
+\]</div>
+<div class="arithmatex">\[
+\Delta (\omega) = \frac{\Gamma}{\pi} \Theta (D - \omega),
+\]</div>
+<p>where <span class="arithmatex">\(\hat{n}_{ds} = \hat{d}_{s}^\dagger \hat{d}_s\)</span> is a number operator at the impurity, <span class="arithmatex">\(U\)</span> is the local Coulomb interaction, <span class="arithmatex">\(\epsilon_d\)</span> is the impurity energy level, <span class="arithmatex">\(\Gamma\)</span> is hybridzation strength, and <span class="arithmatex">\(D\)</span> is the half-bandwidth of the bath. This case is called <em>single-impurity Anderson model (SIAM)</em>. Throughout this tutorial, we set <span class="arithmatex">\(D=1\)</span> as an energy unit, without loss of generality. </p>
+<p>The "box-shaped" hybridization function would look like:</p>
+<p align="center">
+  <img src="../images/CLD1.png" alt="Alt Text" width = "70%">
+</p>
+
+<p>To discretize this, we consider a logarithmic discretization parameter <span class="arithmatex">\(\Lambda &gt; 1\)</span>. The logarithmic frequency grid <span class="arithmatex">\(\pm \Lambda^{-n}\)</span> splits the whole bandwidth <span class="arithmatex">\(\omega \in [-1, 1]\)</span> into the intervals <span class="arithmatex">\(\mathcal{I}_{\pm n}\)</span> that are defined by <span class="arithmatex">\(\mathcal{I}_{+n} = [\Lambda^{-n}, \Lambda^{-n+1}]\)</span> and <span class="arithmatex">\(\mathcal{I}_{-n} = [-\Lambda^{-n+1}, -\Lambda^{-n}]\)</span>.</p>
+<p align="center">
+  <img src="../images/CLD2.png" alt="Alt Text" width = "70%">
+</p>
+
+<p>The part of the bath on each interval <span class="arithmatex">\(\mathcal{I}_{\pm n}\)</span> is replaced by a discrete level at <span class="arithmatex">\(\omega = \xi_{\pm n}\)</span> that is coupled to the impurity with amplitude <span class="arithmatex">\(\gamma_{\pm n}\)</span>.</p>
+<p align="center">
+  <img src="../images/CLD3.png" alt="Alt Text" width = "70%">
+</p>
+
+<p>The discretized Hamiltonian is written by</p>
+<div class="arithmatex">\[
+H_\mathrm{bath} \mapsto H_\mathrm{bath}^\mathrm{star} = \sum_{\pm n} \sum_s 
+\xi_{\pm n} \hat{a}_{\pm n, s}^\dagger \hat{a}_{\pm n, s} ,
+\]</div>
+<div class="arithmatex">\[H_\mathrm{hyb} \mapsto H_\mathrm{hyb}^\mathrm{star} = \sum_{\pm n} \sum_s 
+\gamma_{\pm n} ( \hat{d}_s^\dagger \hat{a}_{\pm n, s} + \hat{a}_{\pm n, s}^\dagger  
+\hat{d}_s ) .
+\]</div>
+<p>Each discretized bath level (to which a particle of spin <span class="arithmatex">\(s\)</span> is added by applying <span class="arithmatex">\(\hat{a}_{\pm n, s}^\dagger\)</span>) represents the part of the bath on an interval <span class="arithmatex">\(\mathcal{I}_{\pm n}\)</span>. Therefore the coupling strength of the level should be the same as the integrated hybridazation strength over the inteval,</p>
+<div class="arithmatex">\[
+\gamma_{\pm n}^2 = \int_{\mathcal{I}_{\pm n}} \mathrm{d}\omega \, \Delta 
+(\omega) .
+\]</div>
+<p>While the coupling amplitude <span class="arithmatex">\(\gamma_{\pm n}\)</span> is unambigously determined, there are several different ways to determine the discretized level position <span class="arithmatex">\(\xi_{\pm n}\)</span>. Here we use the Campo–Oliveira scheme <a href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.72.104432">V. L. Campo and L. N. Oliveira, Phys. Rev. B <em>72</em>, 104432 (2005)</a>, which defines the level position <span class="arithmatex">\(\xi_{\pm n}\)</span> as</p>
+<div class="arithmatex">\[
+\xi_{\pm n} = \frac{ \int_{\mathcal{I}_{\pm n}} \mathrm{d}\omega \, \Delta(\omega) 
+}{ \int_{\mathcal{I}_{\pm n}} \mathrm{d}\omega \, \frac{\Delta(\omega)}{\omega} 
+} .
+\]</div>
+<p>(This way of determining <span class="arithmatex">\(\xi_{\pm n}\)</span> is better than Wilson's original way. There is a more advanced scheme, but it is harder to implement. That's why we use the Campo–Oliveira scheme here.)</p>
+<p>The discretized Hamiltonian <span class="arithmatex">\(H_\mathrm{imp} + H_\mathrm{hyb}^\mathrm{star} + H_\mathrm{bath}^\mathrm{star}\)</span> is so-called <em>star-geometry Hamiltonian.</em> The impurity level and the discretized bath levels (as vertices of a graph), which are coupled via hopping (as edges of the graph), can be depicted as a star graph.</p>
+<blockquote>
+<p>The code implementing logarithmic discretization described above can be downlodaed <a href="../doCLD.m">doCLD.m</a></p>
+</blockquote>
+<p>you can run the following demonstration for verifying the impelementation:</p>
+<p><div class="language-matlab highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">clear</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">Gamma</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">8e-5</span><span class="o">*</span><span class="nb">pi</span><span class="p">;</span><span class="w"> </span><span class="c">% hybridization strength</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c">% NRG parameters</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">Lambda</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">2.5</span><span class="p">;</span><span class="w"> </span><span class="c">% discretization parameter</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">55</span><span class="p">;</span><span class="w"> </span><span class="c">% length of the Wilson chain</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">[</span><span class="n">ff</span><span class="p">,</span><span class="n">gg</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">doCLD</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">Gamma</span><span class="o">/</span><span class="nb">pi</span><span class="p">,</span><span class="n">Lambda</span><span class="p">,</span><span class="n">N</span><span class="p">);</span>
+</span></code></pre></div>
+Since MATLAB indexes the array from 1, we need to shift the indices: |ff(1)| corresponds to <span class="arithmatex">\(t_\mathrm{imp}\)</span> and |ff(n)| for <span class="arithmatex">\(n &gt; 1\)</span> corresponds to <span class="arithmatex">\(t_{\ell = n-2}\)</span>.</p>
+<p>The hopping amplitudes |ff| decay exponentianlly, while the on-site energies |gg| are zeros up do double precision. To see this, we rescale the values with factors <span class="arithmatex">\(\Lambda^{n/2}\)</span>. [<em>Quick exercise</em>: Why <span class="arithmatex">\(\Lambda^{n/2}\)</span>, not <span class="arithmatex">\(\Lambda^n\)</span>? We started from the discretization grid of <span class="arithmatex">\(\pm \Lambda^{-n}\)</span>, so it might look weird to have factor 1/2 in the exponent; but of course, there is a good reason.]</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">figure</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">plot</span><span class="p">([</span><span class="n">ff</span><span class="w"> </span><span class="n">gg</span><span class="p">]</span><span class="o">.*</span><span class="p">(</span><span class="n">Lambda</span><span class="o">.^</span><span class="p">((</span><span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">ff</span><span class="p">)).</span><span class="o">&#39;/</span><span class="mi">2</span><span class="p">)),</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">set</span><span class="p">(</span><span class="nb">gca</span><span class="p">,</span><span class="s">&#39;FontSize&#39;</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">grid</span><span class="w"> </span><span class="s">on</span><span class="p">;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Index n&#39;</span><span class="p">);</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nb">legend</span><span class="p">({</span><span class="s">&#39;ff(n) \times \Lambda^{n/2}&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="s">&#39;gg(n) \times \Lambda^{n/2}&#39;</span><span class="p">},</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="s">&#39;eastoutside&#39;</span><span class="p">);</span>
+</span></code></pre></div>
+<p align="center">
+  <img src="../images/plotLD.png" alt="Alt Text" width = "70%">
+</p>
+
+<p>The first elements of |ff| deviate from the exponential dependence, as we see the deviation from the horizontal line. They come from the specific details of the hybridization function. For example, the square of ff(1) is equivalent to the integral of the hybridization,</p>
+<div class="arithmatex">\[
+t_\mathrm{imp}^2 = \int_{-D}^{D} \mathrm{d}\omega \Delta (\omega) = 2 \Gamma D/ \pi.
+\]</div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">ff</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>^<span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">Gamma</span><span class="o">/</span><span class="nb">pi</span><span class="w"> </span><span class="c">% D = 1 as energy unit</span>
+</span></code></pre></div>
+<h2 id="lanczos-tridiagnolization"><strong>Lanczos tridiagnolization</strong></h2>
+<p>The star-geometry Hamiltonian is <span class="arithmatex">\(H_\mathrm{imp} + H_\mathrm{hyb}^\mathrm{star} + H_\mathrm{bath}^\mathrm{star}\)</span> is mapped onto the <em>Wilson chain Hamiltonian</em>, via the Lanczos tridiagonalization. The Lanczos method (which is implemented, for example, in <code>DMRG/eigs_1site.m</code> in the context of DMRG) first constructs a tridiagonal matrix representation of the input matrix constrained within the Krylov space, and then diagonalizes the tridiagonal matrix to obtain the ground state. The Lanczos tridiagonalization indicates the first part of this process. Here in the mapping onto the Wilson chain, we consider the tridiagonal matrix representation of the quadratic (i.e., single-particle) terms of the bath and the hybridization, without the quartic (i.e., interacting) impurity Hamiltonian.</p>
+<p>The Wilson chain Hamiltonian for the SIAM is given by</p>
+<div class="arithmatex">\[
+H_\mathrm{SIAM}^\mathrm{chain} = H_\mathrm{imp} + H_\mathrm{bath}^\mathrm{chain} 
++ H_\mathrm{hyb}^\mathrm{chain},
+\]</div>
+<div class="arithmatex">\[
+H_\mathrm{imp} = U \hat{n}_{d\uparrow} \hat{n}_{d\downarrow} + \epsilon_d 
+(\hat{n}_{d\uparrow} + \hat{n}_{d\downarrow}),
+\]</div>
+<div class="arithmatex">\[
+H_\mathrm{bath}^\mathrm{chain} = \sum_{\ell \geq 0} \sum_{s = \uparrow,\downarrow} 
+t_\ell \left( \hat{f}_{\ell, s}^\dagger \, \hat{f}_{\ell+1,s} + \hat{f}_{\ell+1,s}^\dagger 
+\, \hat{f}_{\ell, s} \right),
+\]</div>
+<div class="arithmatex">\[
+H_\mathrm{hyb} ^\mathrm{chain}= \sum_s t_\mathrm{imp} \left( \hat{d}_s^\dagger 
+\hat{f}_{0,s} + \hat{f}_{0,s}^\dagger \hat{d}_s \right).
+\]</div>
+<p>Note that the impurity Hamiltonian <span class="arithmatex">\(H_\mathrm{imp}\)</span> is not changed along the logarithmic discretization and the tridiagonalizatoin. The Wilson chain is in principle semi-infinite, but in practice we consider a large but finite length. The length <span class="arithmatex">\(N\)</span> sets in the minimum energy scale <span class="arithmatex">\(\sim \Lambda^{-N/2}\)</span> to consider.</p>
+<p>We will solve this one-dimensional system with the iterative diagonalization.</p>
+<blockquote>
+<p>The code implementing logarithmic discretization described above can be downlodaed <a href="../NRG_IterDiag.m">NRG_IterDiag.m</a></p>
+</blockquote>
+<p>This NRG style of the iterative diagonalization differs from the iterative diagonalization covered in <code>Examples</code> in that (i) the Hamiltonian is rescaled by the energy scale factors <span class="arithmatex">\(\sim \Lambda^{-n/2}\)</span> and (ii) the energy eigenvalues are shifted so that the lowest energy eigenvalue becomes zero. Other than these, it is the same iterative diagonalization.</p>
+<p>As a demonstration of the completed iterative diagonalization, we apply it to the SIAM.</p>
+<p><div class="language-matlab highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c">% Hamiltonian parameters</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">U</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">4e-3</span><span class="p">;</span><span class="w"> </span><span class="c">% Coulomb interaction at the impurity</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">epsd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="n">U</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c">% impurity on-site energy</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c">% NRG parameter</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">Nkeep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">300</span><span class="p">;</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c">% symmetries</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">symstr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;Acharge,SU2spin&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">% U(1) charge and SU(2) spin</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c">% symstr = &#39;Acharge,Aspin&#39;; % U(1) charge and U(1) spin</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="c">% Construct local operators</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="p">[</span><span class="n">F</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">I</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getLocalSpace</span><span class="p">(</span><span class="s">&#39;FermionS&#39;</span><span class="p">,</span><span class="n">symstr</span><span class="p">,</span><span class="s">&#39;NC&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="p">[</span><span class="n">F</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">EF</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">setItag</span><span class="p">(</span><span class="s">&#39;s00&#39;</span><span class="p">,</span><span class="s">&#39;op&#39;</span><span class="p">,</span><span class="n">F</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">I</span><span class="p">.</span><span class="n">E</span><span class="p">);</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="c">% particle number operator</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="n">NF</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">QSpace</span><span class="p">;</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="k">for</span><span class="w"> </span><span class="n">itF</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="n">NF</span><span class="p">(</span><span class="n">itF</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">contract</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">itF</span><span class="p">),</span><span class="s">&#39;!2*&#39;</span><span class="p">,</span><span class="n">F</span><span class="p">(</span><span class="n">itF</span><span class="p">));</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="k">end</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="c">% Impurity Hamiltonian</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="n">H0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">U</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="nb">sum</span><span class="p">(</span><span class="n">NF</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">NF</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">epsd</span><span class="o">*</span><span class="nb">sum</span><span class="p">(</span><span class="n">NF</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1e-33</span><span class="o">*</span><span class="n">EF</span><span class="p">;</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="c">% ket tensor for the impurity</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="n">A0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getIdentity</span><span class="p">(</span><span class="n">setItag</span><span class="p">(</span><span class="s">&#39;L00&#39;</span><span class="p">,</span><span class="n">getvac</span><span class="p">(</span><span class="n">EF</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span><span class="mi">1</span><span class="p">,</span><span class="n">EF</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">&#39;K00&#39;</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]);</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="n">H0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">contract</span><span class="p">(</span><span class="n">A0</span><span class="p">,</span><span class="s">&#39;!2*&#39;</span><span class="p">,{</span><span class="n">A0</span><span class="p">,</span><span class="n">H0</span><span class="p">});</span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="c">% same hopping amplitude and on-site energies for all flavors</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="n">ff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">repmat</span><span class="p">(</span><span class="n">ff</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="nb">numel</span><span class="p">(</span><span class="n">F</span><span class="p">)]);</span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="n">gg</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">repmat</span><span class="p">(</span><span class="n">gg</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="nb">numel</span><span class="p">(</span><span class="n">F</span><span class="p">)]);</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="c">% iterative diagonalization</span>
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="n">Inrg</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NRG_IterDiagQS</span><span class="p">(</span><span class="n">H0</span><span class="p">,</span><span class="n">A0</span><span class="p">,</span><span class="n">Lambda</span><span class="p">,</span><span class="n">ff</span><span class="p">,</span><span class="n">F</span><span class="p">,</span><span class="n">gg</span><span class="p">,</span><span class="n">NF</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">Nkeep</span><span class="p">);</span>
+</span></code></pre></div>
+Here each line indicates the information of each iteration step: time stamp, number of the kept states, number of the total states, the largest energy of the kept states, the largest energy of the discarded states.</p>
+<h2 id="energy-flow-diagram"><strong>Energy flow diagram</strong></h2>
+<p>NRG provides a method to analyze the spectrum obtained along the iterative diagonalization. Let's plot the lowest-lying (many-body) energy levels. We plot the results from even iterations and those from odd iterations separately. The plotting is handled by the function plotEQS|.m|. Please have a look at the code to get an idea how the data from the iterative diagonalization is prepared to finally plot the flow diagram.</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">plotEQS</span><span class="p">(</span><span class="n">Inrg</span><span class="p">);</span>
+</span></code></pre></div>
+<p align="center">
+  <img src="../images/energyFlow.png" alt="Alt Text" width = "70%">
+</p>
+
+<p>These plots are called <em>energy flow diagram</em> or <em>finite-size energy spectra</em>. The name "flow" literally comes from that the lines flow from one regime to the other. There are three regions (iterations 1--10; 17--25; 35--55) connected via two crossovers. These regions correspond to different <em>fixed points: free orbital, local moment, and strong coupling.</em> The strong-coupling fixed-point regime exhibits prominent plateau of the energy levels.</p>
+<blockquote>
+<p><strong>Exercise:</strong> Reproduce lowest-lying energies in the strong-coupling regime by fixed-point Hamiltonians</p>
+</blockquote>
+<p>Let's consider iteration 54 in the strong-coupling fixed-point regime.. Their lowest-lying energies, including all degenerate levels, are:</p>
+<p><div class="language-matlab highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">E</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">eigQS</span><span class="p">(</span><span class="nb">diag</span><span class="p">(</span><span class="n">Inrg</span><span class="p">.</span><span class="n">HK</span><span class="p">{</span><span class="mi">54</span><span class="p">}));</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">EKodd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">if</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">itE</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">size</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="n">EKodd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">EKodd</span><span class="p">;</span><span class="nb">repmat</span><span class="p">(</span><span class="n">E</span><span class="p">(</span><span class="n">itE</span><span class="p">,</span><span class="mi">1</span><span class="p">),[</span><span class="n">E</span><span class="p">(</span><span class="n">itE</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="mi">1</span><span class="p">])];</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="k">end</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="k">else</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="n">EKodd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">E</span><span class="p">;</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="k">end</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nb">fprintf</span><span class="p">([</span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;%.4f, &#39;</span><span class="p">,</span><span class="n">EKodd</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">).</span><span class="o">&#39;</span><span class="p">),</span><span class="s">&#39;\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;%.4f, &#39;</span><span class="p">,</span><span class="n">EKodd</span><span class="p">(</span><span class="mi">6</span><span class="p">:</span><span class="mi">11</span><span class="p">).</span><span class="o">&#39;</span><span class="p">),</span><span class="s">&#39;...\n&#39;</span><span class="p">]);</span>
+</span></code></pre></div>
+We see 1-fold, 4-fold, and 6-fold degeneracies. On the other hand, the energy levels at the next iteration 55 have more degeneracies:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">E</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">eigQS</span><span class="p">(</span><span class="nb">diag</span><span class="p">(</span><span class="n">Inrg</span><span class="p">.</span><span class="n">HK</span><span class="p">{</span><span class="mi">55</span><span class="p">}));</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">EKeven</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">if</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">itE</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">size</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="n">EKeven</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">EKeven</span><span class="p">;</span><span class="nb">repmat</span><span class="p">(</span><span class="n">E</span><span class="p">(</span><span class="n">itE</span><span class="p">,</span><span class="mi">1</span><span class="p">),[</span><span class="n">E</span><span class="p">(</span><span class="n">itE</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="mi">1</span><span class="p">])];</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="k">end</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="k">else</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="n">EKeven</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">E</span><span class="p">;</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="k">end</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="nb">fprintf</span><span class="p">([</span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;%.4f, &#39;</span><span class="p">,</span><span class="n">EKeven</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">).</span><span class="o">&#39;</span><span class="p">),</span><span class="s">&#39;\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;%.4f, &#39;</span><span class="p">,</span><span class="n">EKeven</span><span class="p">(</span><span class="mi">5</span><span class="p">:</span><span class="mi">12</span><span class="p">).</span><span class="o">&#39;</span><span class="p">),</span><span class="s">&#39;\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;%.4f, &#39;</span><span class="p">,</span><span class="n">EKeven</span><span class="p">(</span><span class="mi">13</span><span class="p">:</span><span class="mi">20</span><span class="p">).</span><span class="o">&#39;</span><span class="p">),</span><span class="s">&#39;...\n&#39;</span><span class="p">]);</span>
+</span></code></pre></div>
+<p>There are 4-fold and 16-fold degeneracies, up to numerical noise of <span class="arithmatex">\(O(10^{-6})\)</span>. <em>Reproduce these (many-body) energy values by considering strong-coupling fixed-point Hamiltonians.</em> (<em>Hint</em>: The fixed-point Hamiltonians are single-particle Hamiltonians, effectively!)</p>
+<blockquote>
+<p><strong>Solution to Exercise:</strong> Reproduce lowest-lying energies in the strong-coupling regime by fixed-point Hamiltonians </p>
+</blockquote>
+<p>Let's perform the iterative diagonalization first.
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">clear</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c">% Hamiltonian parameters</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">U</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">4e-3</span><span class="p">;</span><span class="w"> </span><span class="c">% Coulomb interaction at the impurity</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">epsd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="n">U</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c">% impurity on-site energy</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">Gamma</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">8e-5</span><span class="o">*</span><span class="nb">pi</span><span class="p">;</span><span class="w"> </span><span class="c">% hybridization strength</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c">% NRG parameters</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="n">Lambda</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">2.5</span><span class="p">;</span><span class="w"> </span><span class="c">% discretization parameter</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">55</span><span class="p">;</span><span class="w"> </span><span class="c">% length of the Wilson chain</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="n">Nkeep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">300</span><span class="p">;</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="c">% Wilson chain</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="p">[</span><span class="n">ff</span><span class="p">,</span><span class="n">gg</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">doCLD</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">Gamma</span><span class="o">/</span><span class="nb">pi</span><span class="p">,</span><span class="n">Lambda</span><span class="p">,</span><span class="n">N</span><span class="p">);</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="c">% symmetries</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="n">symstr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;Acharge,SU2spin&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">% U(1) charge and SU(2) spin</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="c">% symstr = &#39;Acharge,Aspin&#39;; % U(1) charge and U(1) spin</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="c">% Construct local operators</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="p">[</span><span class="n">F</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">I</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getLocalSpace</span><span class="p">(</span><span class="s">&#39;FermionS&#39;</span><span class="p">,</span><span class="n">symstr</span><span class="p">,</span><span class="s">&#39;NC&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="p">[</span><span class="n">F</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">EF</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">setItag</span><span class="p">(</span><span class="s">&#39;s00&#39;</span><span class="p">,</span><span class="s">&#39;op&#39;</span><span class="p">,</span><span class="n">F</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">I</span><span class="p">.</span><span class="n">E</span><span class="p">);</span>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="c">% particle number operator</span>
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="n">NF</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">QSpace</span><span class="p">;</span>
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="k">for</span><span class="w"> </span><span class="n">itF</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">    </span><span class="n">NF</span><span class="p">(</span><span class="n">itF</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">contract</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">itF</span><span class="p">),</span><span class="s">&#39;!2*&#39;</span><span class="p">,</span><span class="n">F</span><span class="p">(</span><span class="n">itF</span><span class="p">));</span>
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="k">end</span>
+</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>
+</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="c">% Impurity Hamiltonian</span>
+</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="n">H0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">U</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="nb">sum</span><span class="p">(</span><span class="n">NF</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">NF</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">epsd</span><span class="o">*</span><span class="nb">sum</span><span class="p">(</span><span class="n">NF</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1e-33</span><span class="o">*</span><span class="n">EF</span><span class="p">;</span>
+</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a>
+</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="c">% ket tensor for the impurity</span>
+</span><span id="__span-7-34"><a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a><span class="n">A0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getIdentity</span><span class="p">(</span><span class="n">setItag</span><span class="p">(</span><span class="s">&#39;L00&#39;</span><span class="p">,</span><span class="n">getvac</span><span class="p">(</span><span class="n">EF</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span><span class="mi">1</span><span class="p">,</span><span class="n">EF</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">&#39;K00&#39;</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]);</span>
+</span><span id="__span-7-35"><a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a>
+</span><span id="__span-7-36"><a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a><span class="n">H0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">contract</span><span class="p">(</span><span class="n">A0</span><span class="p">,</span><span class="s">&#39;!2*&#39;</span><span class="p">,{</span><span class="n">A0</span><span class="p">,</span><span class="n">H0</span><span class="p">});</span>
+</span><span id="__span-7-37"><a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a>
+</span><span id="__span-7-38"><a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a><span class="c">% same hopping amplitude and on-site energies for all flavors</span>
+</span><span id="__span-7-39"><a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a><span class="n">ff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">repmat</span><span class="p">(</span><span class="n">ff</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="nb">numel</span><span class="p">(</span><span class="n">F</span><span class="p">)]);</span>
+</span><span id="__span-7-40"><a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a><span class="n">gg</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">repmat</span><span class="p">(</span><span class="n">gg</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="nb">numel</span><span class="p">(</span><span class="n">F</span><span class="p">)]);</span>
+</span><span id="__span-7-41"><a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a>
+</span><span id="__span-7-42"><a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a><span class="c">% iterative diagonalization</span>
+</span><span id="__span-7-43"><a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a><span class="n">Inrg</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NRG_IterDiagQS</span><span class="p">(</span><span class="n">H0</span><span class="p">,</span><span class="n">A0</span><span class="p">,</span><span class="n">Lambda</span><span class="p">,</span><span class="n">ff</span><span class="p">,</span><span class="n">F</span><span class="p">,</span><span class="n">gg</span><span class="p">,</span><span class="n">NF</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">Nkeep</span><span class="p">);</span>
+</span></code></pre></div></p>
+<p>Then we plot the energy flow diagram:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c">% Energy flow diagram</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">plotEQS</span><span class="p">(</span><span class="n">Inrg</span><span class="p">);</span>
+</span></code></pre></div>
+<p align="center">
+  <img src="../images/energyFlowExSol.png" alt="Alt Text" width = "70%">
+</p>
+
+<p>The lowest-lying energies at iteration 54 are:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">E</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">eigQS</span><span class="p">(</span><span class="nb">diag</span><span class="p">(</span><span class="n">Inrg</span><span class="p">.</span><span class="n">HK</span><span class="p">{</span><span class="mi">54</span><span class="p">}));</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">EKodd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">if</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">itE</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">size</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">        </span><span class="n">EKodd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">EKodd</span><span class="p">;</span><span class="nb">repmat</span><span class="p">(</span><span class="n">E</span><span class="p">(</span><span class="n">itE</span><span class="p">,</span><span class="mi">1</span><span class="p">),[</span><span class="n">E</span><span class="p">(</span><span class="n">itE</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="mi">1</span><span class="p">])];</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="k">end</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="k">else</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="n">EKodd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">E</span><span class="p">;</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="k">end</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="nb">fprintf</span><span class="p">([</span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;%.4f, &#39;</span><span class="p">,</span><span class="n">EKodd</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">).</span><span class="o">&#39;</span><span class="p">),</span><span class="s">&#39;\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;%.4f, &#39;</span><span class="p">,</span><span class="n">EKodd</span><span class="p">(</span><span class="mi">6</span><span class="p">:</span><span class="mi">11</span><span class="p">).</span><span class="o">&#39;</span><span class="p">),</span><span class="s">&#39;...\n&#39;</span><span class="p">]);</span>
+</span></code></pre></div>
+<p>The fixed-point description for this iteration is that the impurity (site 1) and the first bath site (site 2) are strongly bound and the rest of the chain (from site 3 to site 54) are decoupled from the dimer. So the excitation spectrum is obtained by considering the lowest excitations of the single-particle Hamiltonian for the part from site 3 to site 54, having even number of sites.</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">Hsp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">diag</span><span class="p">(</span><span class="n">ff</span><span class="p">(</span><span class="mi">3</span><span class="p">:</span><span class="mi">53</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">Hsp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Hsp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Hsp</span><span class="o">&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">diag</span><span class="p">([</span><span class="mi">0</span><span class="p">;</span><span class="n">gg</span><span class="p">(</span><span class="mi">3</span><span class="p">:</span><span class="mi">53</span><span class="p">)]);</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">Hsp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Hsp</span><span class="o">/</span><span class="n">Inrg</span><span class="p">.</span><span class="n">EScale</span><span class="p">(</span><span class="mi">54</span><span class="p">);</span><span class="w"> </span><span class="c">% rescale energy scale</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">Esp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eig</span><span class="p">((</span><span class="n">Hsp</span><span class="o">+</span><span class="n">Hsp</span><span class="o">&#39;</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="n">Esp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sort</span><span class="p">(</span><span class="n">Esp</span><span class="p">,</span><span class="s">&#39;ascend&#39;</span><span class="p">);</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c">% many-body energy values</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="n">Evs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">...</span><span class="c"> % ground-state</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="n">Esp</span><span class="p">(</span><span class="k">end</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="n">Esp</span><span class="p">(</span><span class="k">end</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">    </span><span class="c">% lowest one-particle excitation, spin-up/down</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="o">-</span><span class="n">Esp</span><span class="p">(</span><span class="k">end</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="o">-</span><span class="n">Esp</span><span class="p">(</span><span class="k">end</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">    </span><span class="c">% lowest one-hole excitation, spin-up/down</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">    </span><span class="n">Esp</span><span class="p">(</span><span class="k">end</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">Esp</span><span class="p">(</span><span class="k">end</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="n">Esp</span><span class="p">(</span><span class="k">end</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">Esp</span><span class="p">(</span><span class="k">end</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">    </span><span class="n">Esp</span><span class="p">(</span><span class="k">end</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">Esp</span><span class="p">(</span><span class="k">end</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="n">Esp</span><span class="p">(</span><span class="k">end</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">Esp</span><span class="p">(</span><span class="k">end</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">    </span><span class="c">% particle-hole pair excitation, up/down * up/down</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">    </span><span class="n">Esp</span><span class="p">(</span><span class="k">end</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="w">    </span><span class="c">% two-particle exciation (up + down)</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">    </span><span class="o">-</span><span class="n">Esp</span><span class="p">(</span><span class="k">end</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">];</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">    </span><span class="c">% two-hole exciation (up + down)</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="nb">fprintf</span><span class="p">([</span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;%.4f, &#39;</span><span class="p">,</span><span class="n">Evs</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">).</span><span class="o">&#39;</span><span class="p">),</span><span class="s">&#39;\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="w">    </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;%.4f, &#39;</span><span class="p">,</span><span class="n">Evs</span><span class="p">(</span><span class="mi">6</span><span class="p">:</span><span class="mi">11</span><span class="p">).</span><span class="o">&#39;</span><span class="p">),</span><span class="s">&#39;...\n&#39;</span><span class="p">]);</span>
+</span></code></pre></div>
+<p>On the other hand, the lowest-lying energies for iteration 55 have more degeneracies,</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">E</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">eigQS</span><span class="p">(</span><span class="nb">diag</span><span class="p">(</span><span class="n">Inrg</span><span class="p">.</span><span class="n">HK</span><span class="p">{</span><span class="mi">55</span><span class="p">}));</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">EKeven</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span><span class="w"> </span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">if</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">itE</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">size</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">        </span><span class="n">EKeven</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">EKeven</span><span class="p">;</span><span class="nb">repmat</span><span class="p">(</span><span class="n">E</span><span class="p">(</span><span class="n">itE</span><span class="p">,</span><span class="mi">1</span><span class="p">),[</span><span class="n">E</span><span class="p">(</span><span class="n">itE</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="mi">1</span><span class="p">])];</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="k">end</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="k">else</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="n">EKeven</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">E</span><span class="p">;</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="k">end</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="nb">fprintf</span><span class="p">([</span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;%.4f, &#39;</span><span class="p">,</span><span class="n">EKeven</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">).</span><span class="o">&#39;</span><span class="p">),</span><span class="s">&#39;\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;%.4f, &#39;</span><span class="p">,</span><span class="n">EKeven</span><span class="p">(</span><span class="mi">5</span><span class="p">:</span><span class="mi">12</span><span class="p">).</span><span class="o">&#39;</span><span class="p">),</span><span class="s">&#39;\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">    </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;%.4f, &#39;</span><span class="p">,</span><span class="n">EKeven</span><span class="p">(</span><span class="mi">13</span><span class="p">:</span><span class="mi">20</span><span class="p">).</span><span class="o">&#39;</span><span class="p">),</span><span class="s">&#39;...\n&#39;</span><span class="p">]);</span>
+</span></code></pre></div>
+<p>The 4-fold and 16-fold degeneracies can be seen as that extra factor 4 is multiplied to the degeneracies of the 1-fold and 4-fold degeneratices in the case of iteration 54, putting aside different values of energies. This factor 4 can be understood by the fixed-point Hamiltonian as well. The part of the chain decoupled from the strongly coupled dimer has odd number of sites. So it has a zero mode:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">Hsp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">diag</span><span class="p">(</span><span class="n">ff</span><span class="p">(</span><span class="mi">3</span><span class="p">:</span><span class="mi">54</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">Hsp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Hsp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Hsp</span><span class="o">&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">diag</span><span class="p">([</span><span class="mi">0</span><span class="p">;</span><span class="n">gg</span><span class="p">(</span><span class="mi">3</span><span class="p">:</span><span class="mi">54</span><span class="p">)]);</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">Hsp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Hsp</span><span class="o">/</span><span class="n">Inrg</span><span class="p">.</span><span class="n">EScale</span><span class="p">(</span><span class="mi">55</span><span class="p">);</span><span class="w"> </span><span class="c">% rescale energy scale</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">Esp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eig</span><span class="p">((</span><span class="n">Hsp</span><span class="o">+</span><span class="n">Hsp</span><span class="o">&#39;</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">Esp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sort</span><span class="p">(</span><span class="n">Esp</span><span class="p">,</span><span class="s">&#39;ascend&#39;</span><span class="p">);</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;%.4f\n&#39;</span><span class="p">,</span><span class="n">Esp</span><span class="p">((</span><span class="k">end</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">));</span>
+</span></code></pre></div>
+<p>There are four Fock states regarding the zero mode (empty, spin-up, spin-down, doubly occupied), having all the same zero energy. So it introduces factor 4 to the degeneracies. Factoring out the degrees of freedom of this zero mode, we construct the lowest-lying energies at iteration 55 as for iteration 54:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c">% many-body energy values</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">Evs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">...</span><span class="c"> % ground-state</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="n">Esp</span><span class="p">((</span><span class="k">end</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="n">Esp</span><span class="p">((</span><span class="k">end</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="c">% lowest one-particle excitation, spin-up/down</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="o">-</span><span class="n">Esp</span><span class="p">((</span><span class="k">end</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="o">-</span><span class="n">Esp</span><span class="p">((</span><span class="k">end</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">    </span><span class="c">% lowest one-hole excitation, spin-up/down</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">    </span><span class="n">Esp</span><span class="p">((</span><span class="k">end</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">Esp</span><span class="p">((</span><span class="k">end</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">    </span><span class="n">Esp</span><span class="p">((</span><span class="k">end</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">Esp</span><span class="p">((</span><span class="k">end</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">    </span><span class="n">Esp</span><span class="p">((</span><span class="k">end</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">Esp</span><span class="p">((</span><span class="k">end</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="n">Esp</span><span class="p">((</span><span class="k">end</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">Esp</span><span class="p">((</span><span class="k">end</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">    </span><span class="c">% particle-hole pair excitation, up/down * up/down</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">    </span><span class="n">Esp</span><span class="p">((</span><span class="k">end</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">    </span><span class="c">% two-particle exciation (up + down)</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">    </span><span class="o">-</span><span class="n">Esp</span><span class="p">((</span><span class="k">end</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">];</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">    </span><span class="c">% two-hole exciation (up + down)</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="nb">fprintf</span><span class="p">([</span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;%.4f, &#39;</span><span class="p">,</span><span class="n">Evs</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">).</span><span class="o">&#39;</span><span class="p">),</span><span class="s">&#39;\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">    </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;%.4f, &#39;</span><span class="p">,</span><span class="n">Evs</span><span class="p">(</span><span class="mi">6</span><span class="p">:</span><span class="mi">11</span><span class="p">).</span><span class="o">&#39;</span><span class="p">),</span><span class="s">&#39;...\n&#39;</span><span class="p">]);</span>
+</span></code></pre></div>
+<h2 id="single-impurity-kondo-model-sikm"><strong>Single-Impurity Kondo model (SIKM)</strong></h2>
+<p>We can derive the Wilson chain Hamiltonian <span class="arithmatex">\(H_\mathrm{SIKM}^\mathrm{chain}\)</span> for the single-impurity Kondo model (SIKM), from the chain Hamiltonian of the SIAM <span class="arithmatex">\(H_\mathrm{SIAM}^\mathrm{chain}\)</span> shown above. By applying the Schrieffer-Wolff transformation to the impurity site (on which <span class="arithmatex">\(\hat{d}_s\)</span> acts) and the first bath site (on which <span class="arithmatex">\(\hat{f}_{0,s}\)</span> acts), we obtain</p>
+<div class="arithmatex">\[
+H_\mathrm{SIKM}^\mathrm{chain} = H_\mathrm{exc} + H_\mathrm{bath},
+\]</div>
+<div class="arithmatex">\[
+H_\mathrm{exc} = 2J \hat{\vec{S}}_d \cdot \hat{\vec{S}}_0 ,
+\]</div>
+<div class="arithmatex">\[
+H_\mathrm{bath} = \sum_{\ell \geq 0} \sum_{s = \uparrow,\downarrow} t_\ell \left( \hat{f}_{\ell, s}^\dagger \, \hat{f}_{\ell+1,s} + \hat{f}_{\ell+1,s}^\dagger \, \hat{f}_{\ell, s} \right) .
+\]</div>
+<p>Here <span class="arithmatex">\(\hat{\vec{S}}_d\)</span> is the spin operator acting on the impurity site,</p>
+<div class="arithmatex">\[
+\hat{\vec{S}}_0 = \sum_{s,s'} \hat{f}_{0,s}^\dagger \frac{\vec{\sigma}_{s,s'}}{2} 
+\hat{f}_{0,s'}
+\]</div>
+<p>is the spin operator acting on the first bath site, <span class="arithmatex">\(\vec{\sigma} = [\sigma_x, \sigma_y, \sigma_z]\)</span> is the vector of Pauli matrices, and</p>
+<div class="arithmatex">\[
+J = t_0^2 \left( \frac{1}{-\epsilon_d} + \frac{1}{U + \epsilon_d} \right)
+\]</div>
+<p>is the Kondo coupling strength. For particle-hole symmetric case <span class="arithmatex">\(\epsilon_d = -U/2\)</span> which we considered above, it becomes</p>
+<div class="arithmatex">\[
+J = \frac{4 t_0^2}{U} = \frac{8 \Gamma D}{\pi U}.
+\]</div>
+<p>The bath term <span class="arithmatex">\(H_\mathrm{bath}\)</span> is the same as in the SIAM case. Note that the impurity site in the SIKM has dimension 2, while that in the SIAM has 4; the doubly occupied and the empty states are "integrated out" by the Schrieffer-Wolff transformation. Refer to
+<a href="https://journals.aps.org/pr/abstract/10.1103/PhysRev.149.491">J. R. Schrieffer and P. A. Wolff, Phys. Rev. <em>149</em>, 491 (1966)</a> for the details of the Schrieffer-Wolff transformation.</p>
+<blockquote>
+<p><strong>Exercise</strong>: Perform the iterative diagonalization of this chain Hamiltonian for the SIKM, with the value of <span class="arithmatex">\(J\)</span> corresponding to the choice of parameters <span class="arithmatex">\(U\)</span>, <span class="arithmatex">\(\epsilon_d\)</span>, and <span class="arithmatex">\(\Gamma\)</span> above. (Again <span class="arithmatex">\(D = 1\)</span> is the energy unit.) Compare the energy flow diagram with the SIAM result.</p>
+</blockquote>
+<p>(<em>Hint</em>: You can do it by changing <code>H0</code>, <code>A0</code>, and <code>ff</code> only, with using the same function <code>NRG_IterDiagQS</code>!)</p>
+<blockquote>
+<p><strong>Solution to Exercise:</strong> Single-impurity Kondo model</p>
+</blockquote>
+<p>In the example of the SIAM, we set the first leg (i.e., left leg) of <code>A0</code> as a dummy leg for vacuum and the second leg (i.e., bottom leg) for the Anderson impurity. The impurity Hamiltonian <span class="arithmatex">\(H_\mathrm{imp}\)</span> involves only one fermionic site (i.e., <span class="arithmatex">\(d\)</span> level). The rest of the chain Hamiltonian is the hopping and on-site terms that are generated within <code>NRG_IterDiagQS</code>.</p>
+<p>On the other hand, in the SIKM, the exchange interaction <span class="arithmatex">\(H_\mathrm{exc}\)</span> acts on two sites: a spin site for <span class="arithmatex">\(\hat{\vec{S}}_d\)</span> and a spinful fermionic site for <span class="arithmatex">\(\hat{\vec{S}}_0\)</span>. The latter site is the first bath site, and coupled with the other fermionic sites via particle hopping that can be generated inside <code>NRG_IterDiagQS</code>.</p>
+<p>Therefore, to use the same function <code>NRG_IterDiagQS</code> for the SIKM, we associate the first leg of <code>A0</code> with the spin site for <span class="arithmatex">\(\hat{\vec{S}}_d\)</span> and its second leg with the spinful fermionic site for <span class="arithmatex">\(\hat{\vec{S}}_0\)</span>. Accordingly, we shift the hopping amplitudes and on-site energies by one site to the left, as the second leg of <code>A0</code> involves the first bath site.</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">clear</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="c">% Hamiltonian parameters</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="n">U</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">4e-3</span><span class="p">;</span><span class="w"> </span><span class="c">% Coulomb interaction at the impurity</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">epsd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="n">U</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c">% impurity on-site energy</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="n">Gamma</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">8e-5</span><span class="o">*</span><span class="nb">pi</span><span class="p">;</span><span class="w"> </span><span class="c">% hybridization strength</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="n">J</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">8</span><span class="o">*</span><span class="n">Gamma</span><span class="o">/</span><span class="nb">pi</span><span class="o">/</span><span class="n">U</span><span class="p">;</span><span class="w"> </span><span class="c">% Kondo coupling strength</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="c">% NRG parameters</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="n">Lambda</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">2.5</span><span class="p">;</span><span class="w"> </span><span class="c">% discretization parameter</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">55</span><span class="p">;</span><span class="w"> </span><span class="c">% length of the Wilson chain</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="n">Nkeep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">300</span><span class="p">;</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="c">% Wilson chain</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="p">[</span><span class="n">ff</span><span class="p">,</span><span class="n">gg</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">doCLD</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">Gamma</span><span class="o">/</span><span class="nb">pi</span><span class="p">,</span><span class="n">Lambda</span><span class="p">,</span><span class="n">N</span><span class="p">);</span>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="n">ff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ff</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="c">% shift to the left by one site</span>
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="n">gg</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gg</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
+</span></code></pre></div>
+<p>Here <code>ff(1)</code>, <code>ff(2)</code>, <code>ff(3)</code>, ... are equal to <code>ff(2)</code>, <code>ff(3)</code>, <code>ff(4)</code>, ... for the <code>ff</code> vector in the SIAM case. Note that the first element <code>ff(1)</code> in the SIAM case depends on the hybridization strength <span class="arithmatex">\(\Gamma\)</span>; it is absorbed into the definition of <span class="arithmatex">\(J\)</span> after the Schrieffer-Wolff transformation.</p>
+<p>Then run the iterative diagonalization, and plot the energy flow diagram.</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c">% Construct local operators</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="p">[</span><span class="n">F</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">I</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getLocalSpace</span><span class="p">(</span><span class="s">&#39;FermionS&#39;</span><span class="p">,</span><span class="s">&#39;Acharge,SU2spin&#39;</span><span class="p">,</span><span class="s">&#39;NC&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="p">[</span><span class="n">F</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">EF</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">setItag</span><span class="p">(</span><span class="s">&#39;s00&#39;</span><span class="p">,</span><span class="s">&#39;op&#39;</span><span class="p">,</span><span class="n">F</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">I</span><span class="p">.</span><span class="n">E</span><span class="p">);</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="p">[</span><span class="n">Ss</span><span class="p">,</span><span class="n">Is</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getLocalSpace</span><span class="p">(</span><span class="s">&#39;Spin&#39;</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="p">[</span><span class="n">Ss</span><span class="p">,</span><span class="n">Is</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">setItag</span><span class="p">(</span><span class="s">&#39;L00&#39;</span><span class="p">,</span><span class="s">&#39;op&#39;</span><span class="p">,</span><span class="n">Ss</span><span class="p">,</span><span class="n">Is</span><span class="p">.</span><span class="n">E</span><span class="p">);</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c">% attach U(1) charge symmetry label to spin</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="n">Ss</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">appendScalarSymmetry</span><span class="p">(</span><span class="n">Ss</span><span class="p">,</span><span class="s">&#39;A&#39;</span><span class="p">,</span><span class="s">&#39;pos&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="n">Is</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">appendScalarSymmetry</span><span class="p">(</span><span class="n">Is</span><span class="p">,</span><span class="s">&#39;A&#39;</span><span class="p">,</span><span class="s">&#39;pos&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="c">% particle number operator</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="n">NF</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">QSpace</span><span class="p">;</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="k">for</span><span class="w"> </span><span class="n">itF</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">    </span><span class="n">NF</span><span class="p">(</span><span class="n">itF</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">contract</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">itF</span><span class="p">),</span><span class="s">&#39;!2*&#39;</span><span class="p">,</span><span class="n">F</span><span class="p">(</span><span class="n">itF</span><span class="p">));</span>
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="k">end</span>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="c">% Impurity Hamiltonian</span>
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="n">H0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">J</span><span class="o">*</span><span class="n">contract</span><span class="p">(</span><span class="n">Ss</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="s">&#39;*&#39;</span><span class="p">);</span>
+</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>
+</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="c">% ket tensor for the impurity</span>
+</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="n">A0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getIdentity</span><span class="p">(</span><span class="n">Is</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">EF</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">&#39;K00&#39;</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]);</span>
+</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>
+</span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="n">H0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">contract</span><span class="p">(</span><span class="n">A0</span><span class="p">,</span><span class="s">&#39;!2*&#39;</span><span class="p">,{</span><span class="n">A0</span><span class="p">,</span><span class="n">H0</span><span class="p">})</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1e-33</span><span class="o">*</span><span class="n">contract</span><span class="p">(</span><span class="n">A0</span><span class="p">,</span><span class="s">&#39;!2*&#39;</span><span class="p">,</span><span class="n">A0</span><span class="p">);</span>
+</span><span id="__span-15-24"><a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a>
+</span><span id="__span-15-25"><a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a><span class="c">% iterative diagonalization</span>
+</span><span id="__span-15-26"><a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a><span class="n">Inrg</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NRG_IterDiagQS</span><span class="p">(</span><span class="n">H0</span><span class="p">,</span><span class="n">A0</span><span class="p">,</span><span class="n">Lambda</span><span class="p">,</span><span class="n">ff</span><span class="p">,</span><span class="n">F</span><span class="p">,</span><span class="n">gg</span><span class="p">,</span><span class="n">NF</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">Nkeep</span><span class="p">);</span>
+</span></code></pre></div>
+<p>Then plot the energy flow:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c">% Energy flow diagram</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">plotEQS</span><span class="p">(</span><span class="n">Inrg</span><span class="p">);</span>
+</span></code></pre></div>
+<p align="center">
+  <img src="../images/energyFlowSIKM.png" alt="Alt Text" width = "70%">
+</p>
+
+<p>The energy flow diagram looks similar with the diagram for the SIAM, especially the last crossovers and the spectrum at the last iterations in the strong-coupling fixed-point regime. There are two differences as well:</p>
+<p><strong>The panel for even (odd) iterations in the SIKM case look similar to the panel for odd (even) iterations in the SIAM. It is because we have shifted the chain sites by one to the left.</strong> While there are two crossovers in the SIAM, here in the SIKM there is only one crossover, which is from the local moment regime to the Kondo regime.</p>
+<p>&nbsp;</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
