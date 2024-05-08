@@ -17,8 +17,8 @@ nav:
       # - "iNRG for SIAM": examples/NRG/Ex_SIAM_iNRG.md
       # - "NRG Energy Flow": examples/NRG/NRG_Eflow.md
       - "NRG-1: Energy Flow": examples/NRG/NRG1_Energy_Flow.md
-      # - "NRG-2: Impurity Contribution  to Thermaldynamic  Properties": tutorial/NRG2_ImpThermo.md
-      # - "NRG-3: Impurity Spectral Function": tutorial/NRG3_ImpSpec.md
+      - "NRG-2: Impurity Contribution  to Thermaldynamic  Properties": examples/NRG/NRG2_ImpThermo.md
+      - "NRG-3: Impurity Spectral Function": examples/NRG/NRG3_ImpSpec.md
       - "NRG for SIKM": examples/NRG/NRG_Kondo.md
       - "SIKM Thermal Properties": examples/NRG/NRG_Kondo_Thermal.md
       - "NRG for Spectral Functions": examples/NRG/NRG_SpecFunc.md
