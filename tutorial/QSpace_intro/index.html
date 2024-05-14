@@ -308,14 +308,23 @@
   
     
     
+      
+  
+  
+  
+    
+    
       <li class="md-tabs__item">
-        <a href="../../iterdiag/" class="md-tabs__link">
+        <a href="../../examples/NRG/NRG1_Energy_Flow/" class="md-tabs__link">
           
   
   Examples
 
         </a>
       </li>
+    
+  
+
     
   
 
@@ -879,27 +888,6 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../iterdiag/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Iterative Diagonalization
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
     
@@ -913,10 +901,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
         
           
-          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -927,8 +915,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             NRG Examples
           </label>
@@ -1087,10 +1075,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -1101,8 +1089,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             DMRG Examples
           </label>
@@ -2145,11 +2133,28 @@ AW (C) Aug 2006 ; May 2010 ; Oct 2014
 &nbsp;&nbsp;&nbsp;&nbsp;1. 1x1x1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;1x2x2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ -1 0 ; 0 &nbsp;1 ; -1 1 ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-1.414<br>&nbsp;&nbsp;&nbsp;&nbsp;2. 1x1x1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;2x1x2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ &nbsp;0 1 ; 1 &nbsp;0 ; -1 1 ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-1.414</span></p>
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="n">I0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getIdentity</span><span class="p">(</span><span class="n">F1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;-0&#39;</span><span class="p">)</span>
 </span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This behavior is different in QSpace v4.0+ and QSpace v3.2-. In versions before QSpace v3.2, the default itags are identical for both indices of the <span class="arithmatex">\(1j\)</span> symbol. However, the two spaces that the indices belong to are mathematically dual to each other. Therefore, from QSpace v4.0+, a trailing prime will be automatically appended to the second itag. In cases where the <span class="arithmatex">\(1j\)</span> symbol is used <em>in pairs</em>, e.g. invert an arrow before an SVD and invert it back afterwards, one does not need to take care of the trailing prime. While in other cases, the prime should be removed by hard-coding.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">QSpace v4.0+</label><label for="__tabbed_1_2">QSpace v3.2-</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><span style="font-family: monospace; font-size:.85em">I0 = <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Q: 1x [2 2] having 'A,SU2',&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ op, op' }&nbsp;&nbsp;&nbsp;<br>
+&nbsp;data: 2-D double (112 bytes)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 x 1 =&gt; 2 x 2<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;1. 1x1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;2x2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ -1 1 ; 1 1 ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;&nbsp;{1.414}</span></p>
+</div>
+<div class="tabbed-block">
 <p><span style="font-family: monospace; font-size:.85em">I0 = <br>
 &nbsp;&nbsp;&nbsp;&nbsp;Q: 1x [2 2] having 'A,SU2',&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ op, op }&nbsp;&nbsp;&nbsp;<br>
 &nbsp;data: 2-D double (112 bytes)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 x 1 =&gt; 2 x 2<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;1. 1x1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;2x2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ -1 1 ; 1 1 ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;&nbsp;{1.414}</span></p>
+</div>
+</div>
+</div>
 <p>The generated operator <span style="font-family: monospace; font-size:.85em">I'</span> is rank-2, and has all-in legs. By looking at the quantum numbers associated with the third leg of <span style="font-family: monospace; font-size:.85em">F1</span>, we see that the first leg of <span style="font-family: monospace; font-size:.85em">I0</span> corresponds the third leg of <span style="font-family: monospace; font-size:.85em">F1</span>. The tensor network diagram for <span style="font-family: monospace; font-size:.85em">I0</span> is:</p>
 <p align="center">
   <img src="../images/image_5.png" alt="Alt Text" width = "12%">
