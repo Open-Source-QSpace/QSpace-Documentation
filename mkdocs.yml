@@ -5,6 +5,7 @@ nav:
     - What is QSpace?: index.md
     - Installation:
       - "Install on Linux": Linux.md
+      - "Install on macOS": macOS.md
   - Tutorial:
     - "Get to Know QSpace": tutorial/QSpace_intro.md
     - "Starting Point: getLocalSpace": tutorial/getLocalSpace.md
