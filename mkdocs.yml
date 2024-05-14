@@ -10,7 +10,7 @@ nav:
     - "Get to Know QSpace": tutorial/QSpace_intro.md
     - "Starting Point: getLocalSpace": tutorial/getLocalSpace.md
   - Examples:
-    - Iterative Diagonalization: iterdiag.md
+    # - Iterative Diagonalization: iterdiag.md
     - NRG Examples: 
       # - "Spin-1/2 1-Channel Kondo": examples/NRG/Ex_1CK.md
       # - "Spinless 2-Channel Impurity": examples/NRG/Ex_NonDiag.md
