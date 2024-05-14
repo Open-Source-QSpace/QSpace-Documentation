@@ -864,13 +864,25 @@ F1
 I0 = getIdentity(F1,3, '-0')
 ```
 
-<span style="font-family: monospace; font-size:.85em">I0 = <br>
-&nbsp;&nbsp;&nbsp;&nbsp;Q: 1x [2 2] having 'A,SU2',&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ op, op }&nbsp;&nbsp;&nbsp;<br>
-&nbsp;data: 2-D double (112 bytes)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 x 1 => 2 x 2<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;1. 1x1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;2x2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ -1 1 ; 1 1 ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;&nbsp;{1.414}</span>
+!!! warning
 
+    This behavior is different in QSpace v4.0+ and QSpace v3.2-. In versions before QSpace v3.2, the default itags are identical for both indices of the $1j$ symbol. However, the two spaces that the indices belong to are mathematically dual to each other. Therefore, from QSpace v4.0+, a trailing prime will be automatically appended to the second itag. In cases where the $1j$ symbol is used *in pairs*, e.g. invert an arrow before an SVD and invert it back afterwards, one does not need to take care of the trailing prime. While in other cases, the prime should be removed by hard-coding.
 
+=== "QSpace v4.0+"
+
+    <span style="font-family: monospace; font-size:.85em">I0 = <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Q: 1x [2 2] having 'A,SU2',&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ op, op' }&nbsp;&nbsp;&nbsp;<br>
+    &nbsp;data: 2-D double (112 bytes)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 x 1 => 2 x 2<br>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;1. 1x1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;2x2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ -1 1 ; 1 1 ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;&nbsp;{1.414}</span>
+
+=== "QSpace v3.2-"
+
+    <span style="font-family: monospace; font-size:.85em">I0 = <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Q: 1x [2 2] having 'A,SU2',&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ op, op }&nbsp;&nbsp;&nbsp;<br>
+    &nbsp;data: 2-D double (112 bytes)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 x 1 => 2 x 2<br>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;1. 1x1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;2x2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ -1 1 ; 1 1 ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;&nbsp;{1.414}</span>
 
 The generated operator <span style="font-family: monospace; font-size:.85em">I'</span> is rank-2, and has all-in legs. By looking at the quantum numbers associated with the third leg of <span style="font-family: monospace; font-size:.85em">F1</span>, we see that the first leg of <span style="font-family: monospace; font-size:.85em">I0</span> corresponds the third leg of <span style="font-family: monospace; font-size:.85em">F1</span>. The tensor network diagram for <span style="font-family: monospace; font-size:.85em">I0</span> is:
 
