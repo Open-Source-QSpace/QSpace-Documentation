@@ -12,7 +12,7 @@
         <link rel="prev" href="../../../iterdiag/">
       
       
-        <link rel="next" href="../NRG_Kondo/">
+        <link rel="next" href="../NRG2_ImpThermo/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -522,6 +522,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../macOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install on macOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -819,6 +840,48 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NRG2_ImpThermo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NRG-2: Impurity Contribution  to Thermaldynamic  Properties
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NRG3_ImpSpec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NRG-3: Impurity Spectral Function
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1331,7 +1394,7 @@ H_\mathrm{bath} \mapsto H_\mathrm{bath}^\mathrm{star} = \sum_{\pm n} \sum_s
 <p>(This way of determining <span class="arithmatex">\(\xi_{\pm n}\)</span> is better than Wilson's original way. There is a more advanced scheme, but it is harder to implement. That's why we use the Campo–Oliveira scheme here.)</p>
 <p>The discretized Hamiltonian <span class="arithmatex">\(H_\mathrm{imp} + H_\mathrm{hyb}^\mathrm{star} + H_\mathrm{bath}^\mathrm{star}\)</span> is so-called <em>star-geometry Hamiltonian.</em> The impurity level and the discretized bath levels (as vertices of a graph), which are coupled via hopping (as edges of the graph), can be depicted as a star graph.</p>
 <blockquote>
-<p>The code implementing logarithmic discretization described above can be downlodaed <a href="../doCLD.m">doCLD.m</a></p>
+<p>The code implementing logarithmic discretization described above can be downlodaed <a href="../codes/doCLD.m">doCLD.m</a></p>
 </blockquote>
 <p>you can run the following demonstration for verifying the impelementation:</p>
 <p><div class="language-matlab highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">clear</span>
@@ -1370,7 +1433,7 @@ t_\mathrm{imp}^2 = \int_{-D}^{D} \mathrm{d}\omega \Delta (\omega) = 2 \Gamma D/ 
 <p>The star-geometry Hamiltonian is <span class="arithmatex">\(H_\mathrm{imp} + H_\mathrm{hyb}^\mathrm{star} + H_\mathrm{bath}^\mathrm{star}\)</span> is mapped onto the <em>Wilson chain Hamiltonian</em>, via the Lanczos tridiagonalization. The Lanczos method (which is implemented, for example, in <code>DMRG/eigs_1site.m</code> in the context of DMRG) first constructs a tridiagonal matrix representation of the input matrix constrained within the Krylov space, and then diagonalizes the tridiagonal matrix to obtain the ground state. The Lanczos tridiagonalization indicates the first part of this process. Here in the mapping onto the Wilson chain, we consider the tridiagonal matrix representation of the quadratic (i.e., single-particle) terms of the bath and the hybridization, without the quartic (i.e., interacting) impurity Hamiltonian.</p>
 <p>The Wilson chain Hamiltonian for the SIAM is given by</p>
 <div class="arithmatex">\[
-H_\mathrm{SIAM}^\mathrm{chain} = H_\mathrm{imp} + H_\mathrm{bath}^\mathrm{chain} 
+H_{\mathrm{SIAM}}^{\mathrm{chain}} = H_\mathrm{imp} + H_\mathrm{bath}^\mathrm{chain} 
 + H_\mathrm{hyb}^\mathrm{chain},
 \]</div>
 <div class="arithmatex">\[
@@ -1389,7 +1452,7 @@ H_\mathrm{hyb} ^\mathrm{chain}= \sum_s t_\mathrm{imp} \left( \hat{d}_s^\dagger
 <p>Note that the impurity Hamiltonian <span class="arithmatex">\(H_\mathrm{imp}\)</span> is not changed along the logarithmic discretization and the tridiagonalizatoin. The Wilson chain is in principle semi-infinite, but in practice we consider a large but finite length. The length <span class="arithmatex">\(N\)</span> sets in the minimum energy scale <span class="arithmatex">\(\sim \Lambda^{-N/2}\)</span> to consider.</p>
 <p>We will solve this one-dimensional system with the iterative diagonalization.</p>
 <blockquote>
-<p>The code implementing logarithmic discretization described above can be downlodaed <a href="../NRG_IterDiag.m">NRG_IterDiag.m</a></p>
+<p>The code implementing logarithmic discretization described above can be downlodaed <a href="../codes/NRG_IterDiag.m">NRG_IterDiag.m</a></p>
 </blockquote>
 <p>This NRG style of the iterative diagonalization differs from the iterative diagonalization covered in <code>Examples</code> in that (i) the Hamiltonian is rescaled by the energy scale factors <span class="arithmatex">\(\sim \Lambda^{-n/2}\)</span> and (ii) the energy eigenvalues are shifted so that the lowest energy eigenvalue becomes zero. Other than these, it is the same iterative diagonalization.</p>
 <p>As a demonstration of the completed iterative diagonalization, we apply it to the SIAM.</p>
