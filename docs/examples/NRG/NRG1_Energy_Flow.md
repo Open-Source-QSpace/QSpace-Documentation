@@ -90,7 +90,7 @@ $$
  
 The discretized Hamiltonian $H_\mathrm{imp} + H_\mathrm{hyb}^\mathrm{star} + H_\mathrm{bath}^\mathrm{star}$ is so-called *star-geometry Hamiltonian.* The impurity level and the discretized bath levels (as vertices of a graph), which are coupled via hopping (as edges of the graph), can be depicted as a star graph.
 
-> The code implementing logarithmic discretization described above can be downlodaed [doCLD.m](./doCLD.m)
+> The code implementing logarithmic discretization described above can be downlodaed [doCLD.m](./codes/doCLD.m)
 
 you can run the following demonstration for verifying the impelementation:
 
@@ -140,7 +140,7 @@ The star-geometry Hamiltonian is $H_\mathrm{imp} + H_\mathrm{hyb}^\mathrm{star} 
 The Wilson chain Hamiltonian for the SIAM is given by
  
 $$
-H_\mathrm{SIAM}^\mathrm{chain} = H_\mathrm{imp} + H_\mathrm{bath}^\mathrm{chain} 
+H_{\mathrm{SIAM}}^{\mathrm{chain}} = H_\mathrm{imp} + H_\mathrm{bath}^\mathrm{chain} 
 + H_\mathrm{hyb}^\mathrm{chain},
 $$
 
@@ -164,7 +164,7 @@ Note that the impurity Hamiltonian $H_\mathrm{imp}$ is not changed along the log
  
 We will solve this one-dimensional system with the iterative diagonalization.
 
-> The code implementing logarithmic discretization described above can be downlodaed [NRG_IterDiag.m](./NRG_IterDiag.m)
+> The code implementing logarithmic discretization described above can be downlodaed [NRG_IterDiag.m](./codes/NRG_IterDiag.m)
 
 This NRG style of the iterative diagonalization differs from the iterative diagonalization covered in `Examples` in that (i) the Hamiltonian is rescaled by the energy scale factors $\sim \Lambda^{-n/2}$ and (ii) the energy eigenvalues are shifted so that the lowest energy eigenvalue becomes zero. Other than these, it is the same iterative diagonalization.
 
