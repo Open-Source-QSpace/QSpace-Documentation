@@ -1,11 +1,20 @@
 # Installation on macOS
 
 ## Install MATLAB {#sec:mac_ml}
+
 QSpace is a library running on MATLAB, so we need a MATLAB
 installation. For the current QSpace distribution (v4.0),
 we recommend to use MATLAB R2020b or later, since the provided binaries
 are compiled with R2020b. Older MATLAB versions might work, but no
 guarantee.
+
+!!! note
+
+    MATLAB has a native Apple Silicon version since 2023b. However, the QSpace 
+    binaries for macOS are compiled with intel x86_64 architechture. Therefore,
+    QSpace is currently incompatible with the native Apple Silicon MATLAB.
+    For users of MATLAB 2023b or newer, please install the version 
+    compiled for intel processors and run the MATLAB over Rosetta 2.
 
 ## Install `gmp` {#sec:mac_gmp}
 
