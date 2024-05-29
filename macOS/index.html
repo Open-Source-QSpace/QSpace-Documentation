@@ -1439,6 +1439,14 @@ installation. For the current QSpace distribution (v4.0),
 we recommend to use MATLAB R2020b or later, since the provided binaries
 are compiled with R2020b. Older MATLAB versions might work, but no
 guarantee.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>MATLAB has a native Apple Silicon version since 2023b. However, the QSpace 
+binaries for macOS are compiled with intel x86_64 architechture. Therefore,
+QSpace is currently incompatible with the native Apple Silicon MATLAB.
+For users of MATLAB 2023b or newer, please install the version 
+compiled for intel processors and run the MATLAB over Rosetta 2.</p>
+</div>
 <h2 id="sec:mac_gmp">Install <code>gmp</code></h2>
 <p>QSpace uses <code>gmp</code>, a multiprecision arithmetics library, in generating
 and manipulating the Clebsch-Gordan coefficient tensors. However, a
