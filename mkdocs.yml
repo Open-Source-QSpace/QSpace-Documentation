@@ -26,8 +26,34 @@ nav:
     - DMRG Examples:
       - "2D Hubbard Model": examples/DMRG/DMRGHubbard2D.md
   - Reference:
-    - getLocalSpace: reference/getLocalSpace.md
+    - compactQS: reference/compactQS.md
     - contractQS: reference/contractQS.md
+    - diagQS: reference/diagQS.md
+    - eigQS: reference/eigQS.md
+    - fdmNRG_QS: reference/fdmNRG_QS.md
+    - fgrNRG: reference/fgrNRG.md
+    - getDimQS: reference/getDimQS.md
+    - getIdentityQS: reference/getIdentityQS.md
+    - getLocalSpace: reference/getLocalSpace.md
+    - getQDimQS: reference/getQDimQS.md
+    - getRC: reference/getRC.md
+    - getSmoothSpec: reference/getSmoothSpec.md
+    - getSmoothTDM: reference/getSmoothTDM.md
+    - getSymStates: reference/getSymStates.md
+    - isHConjQS: reference/isHConjQS.md
+    - isIdentityCG: reference/isIdentityCG.md
+    - isIdentityQS: reference/isIdentityQS.md
+    - makeUniqueQS: reference/makeUniqueQS.md
+    - normQS: reference/normQS.md
+    - orthoQS: reference/orthoQS.md
+    - permuteQS: reference/permuteQS.md
+    - plusQS: reference/plusQS.md
+    - setupRCStore: reference/setupRCStore.md
+    - skipZerosQS: reference/skipZerosQS.md
+    - svdQS: reference/svdQS.md
+    - tdmNRG: reference/tdmNRG.md
+    - traceQS: reference/traceQS.md
+
   - Contribute:
     - How to Contribute: contribg.md
     - Markdown Guide: mdref.md
