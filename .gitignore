@@ -1,3 +1,6 @@
+# Ignore the QSpace source file
+osqs
+
 # macOS standard .gitignore
 # =========================
 
