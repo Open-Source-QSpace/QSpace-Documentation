@@ -3,12 +3,34 @@ site_name: QSpace Documentation
 nav:
   - Getting started:
     - What is QSpace?: index.md
+    # - Community Edition: community.md
     - Installation:
       - "Install on Linux": Linux.md
       - "Install on macOS": macOS.md
   - Tutorial:
-    - "Get to Know QSpace": tutorial/QSpace_intro.md
-    - "Starting Point: getLocalSpace": tutorial/getLocalSpace.md
+    # - "Get to Know QSpace": tutorial/QSpace_intro.md
+    - "Get to Know QSpace": tutorial/Get2Know.md
+    - "Clebsch-Gordan Coefficients": tutorial/CGCoeff.md
+    - "Generate Local Operators": tutorial/LocalOps.md
+    - "Understand QSpace Objects": tutorial/QSpaceObj.md
+    - "Access QSpace Data": tutorial/QSpaceData.md
+    - Operations:
+      - "Basic Operations": tutorial/BasicOps.md
+      - "Access Subspaces": tutorial/Subspace.md
+      - "Contraction": tutorial/Contraction.md
+      - "Direct Sum": tutorial/DrctSum.md
+      - "Eigen-decomposition": tutorial/EigenDecomp.md
+      - "Singular Value Decomposition": tutorial/SingValDecomp.md
+    - Special Case:
+      - "Rank-2 Tensors": tutorial/Rank2.md
+      - "Vacuum Space": tutorial/Vacuum.md
+      - "Identity & Isometry": tutorial/Isometries.md
+    - Technicality:
+      - "Truncation of Zeros": tutorial/ZeroTrunc.md
+      - "Normalization Convention": tutorial/NormConv.md
+      - "Outer Multiplicity": tutorial/OuterMult.md
+
+    # - "Starting Point: getLocalSpace": tutorial/getLocalSpace.md
   - Examples:
     # - Iterative Diagonalization: iterdiag.md
     - NRG Examples: 
