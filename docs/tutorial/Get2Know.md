@@ -1,0 +1,10 @@
+# Get to Know QSpace
+
+Author: [Seung-Sup Lee](https://www.theorie.physik.uni-muenchen.de/lsvondelft/members/sci_mem/seung_sup-lee/index.html)<br>
+Re-organized by [Changkai Zhang](https://www.theorie.physik.uni-muenchen.de/17ls_th_solidstate_en/members/sci_mem/anand1/index.html)
+
+**QSpace** is a powerful tensor network library developed by [Andreas Weichselbaum](https://homepages.physik.uni-muenchen.de/~Andreas.Weichselbaum/), a long-term colleague of our group. This library enables the generation and manipulation of tensors that respect general Abelian and non-Abelian symmetries. It consists of many MATLAB functions (<span style="font-family: monospace; font-size:.85em">.m</span>), as well as MEX functions (<span style="font-family: monospace; font-size:.85em">.mexa64</span> or <span style="font-family: monospace; font-size:.85em">.mexamaci64</span>) that are binary files written in C++. These MEX functions are used for computationally demanding jobs, such as contraction and eigendecomposition. Thus using the QSpace library can be more efficient, even without exploiting symmetries, than the bare MATLAB code!
+
+The **Open Source QSpace** project includes a standard and a community edition. The community edition is a tailored version of the standard QSpace tensor library which is part of our commitment to fostering an open, collaborative environment for scientific exploration and software development. The community edition is distinctively designed to cater to a vibrant community of developers, researchers, and academicians who are deeply invested in the advancement of tensor network algorithms for quantum lattice models.
+
+The goal of this tutorial is to provide the practical knowledge on using the QSpace library and understanding QSpace objects. For the details of physical and mathematical concepts (e.g., IROP, IREP), please refer to [A. Weichselbaum, Ann. Phys. *327*, 2972 (2012)](https://www.sciencedirect.com/science/article/pii/S0003491612001121?via%3Dihub) and [A. Weichselbaum, Phys. Rev. Research **2**, 023385 (2020)](https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.2.023385).
