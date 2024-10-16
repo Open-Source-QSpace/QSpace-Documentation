@@ -90,6 +90,7 @@ theme:
     - navigation.sections
     - content.action.edit
     - content.action.view
+    - content.code.copy
   icon:
     admonition:
       note: fontawesome/solid/note-sticky
