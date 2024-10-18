@@ -12,7 +12,6 @@ nav:
     - Development:
       - "Changelog": changelog.md
   - Tutorial:
-    # - "Get to Know QSpace": tutorial/QSpace_intro.md
     - "Get to Know QSpace": tutorial/Get2Know.md
     - "Clebsch-Gordan Coefficients": tutorial/CGCoeff.md
     - "Generate Local Operators": tutorial/LocalOps.md
