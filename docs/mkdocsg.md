@@ -143,5 +143,3 @@ mkdocs build
 ---
 
 By following these steps, you should be able to set up and use MkDocs in your local computers. If you have any questions, please contact the administrator Changkai Zhang at [changkai.zhang@physik.lmu.de](mailto:changkai.zhang@physik.lmu.de).
-
-&nbsp;

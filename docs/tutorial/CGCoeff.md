@@ -13,5 +13,3 @@ getenv('RC_STORE')
 <span style="font-family: monospace; font-size:.85em">startup.m</span> which we provided automatically sets the path and creates the corresponding directory, if not exists.
 
 The Clebsch-Gordan data generated on the fly are indexed depending on their order of appearance. Therefore, it is possible that the same Clebsch-Gordan coefficients are indexed differently, or vice versa. So manipulating (e.g., contracting) one QSpace object generated from the calculation on one machine and another QSpace objected generated from the other calculation on the other machine can lead to the inconsistency of the Clebsch-Gordan coefficients. Therefore, it is advised to generate large enough set of the Clebsch-Gordan data and use the data set for different calculations. However, for the tutorial here, this is not important: The Clebsch-Gordan coefficients relevant to this tutorial can be generated from scratch with very small computational cost.
-
-&nbsp;

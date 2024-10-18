@@ -32,5 +32,3 @@ Then we have the sector <span style="font-family: monospace; font-size:.85em">[-
 It is an intended feature rather than a bug. When contract tensors over the tensor network, the all-zero sectors in the constituent tensors do not contribute to the result. So the truncation of such all-zero sectors yields better computational efficiency.
 
 However, when we consider the Hamiltonian in effective basis, the Hamiltonian may have the sectors of all zero matrix elements, and such sectors should be kept. All the energy eigenvalues, whether zero or finite, have meaning! For this, we should enforce to keep all-zero sectors. One trick is to add the identity operator, multiplied by very small number smaller than double precision (e.g., $10^{-30}$), to the Hamiltonian. Such small number should not change the physical results, but prevents unwanted truncation.
-
-&nbsp;

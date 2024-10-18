@@ -57,5 +57,3 @@ Vd = QSpace(Vd)
 
 
 The first leg (incoming) of <span style="font-family: monospace; font-size:.85em">AI</span> is associated with the second leg (incoming) of <span style="font-family: monospace; font-size:.85em">Vd</span>. And the singular value tensor <span style="font-family: monospace; font-size:.85em">S</span> is all-in.
-
-&nbsp;

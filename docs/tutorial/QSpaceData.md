@@ -131,5 +131,3 @@ end
 The itags are really useful when we treat many tensors at the same time. For example, when many tensors are contracted sequentially (as in TN<span style="font-family: monospace; font-size:.85em">/Tensor/updateLeft</span>), tracking down the leg order at each contraction step is quite tedious job, and is often the source of bug, if one makes a mistake in counting the leg order. By using itags, however, the QSpace library performs the sanity check for the compatibility of legs, and enables the contraction multiple tensors/legs with simple syntax!
 
 We emphasize that one can directly edit **only the reduced matrix elements** (<span style="font-family: monospace; font-size:.85em">.data</span>) **and itags** (<span style="font-family: monospace; font-size:.85em">.info.itags</span>) of QSpace objects. Tinkering any other part of QSpace object may break the consistency of data; and the QSpace library detects such consistency, as you see from the above example of wrong itags.
-
-&nbsp;

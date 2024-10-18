@@ -526,5 +526,3 @@ plotEQS(Inrg);
 The energy flow diagram looks similar with the diagram for the SIAM, especially the last crossovers and the spectrum at the last iterations in the strong-coupling fixed-point regime. There are two differences as well:
 
 **The panel for even (odd) iterations in the SIKM case look similar to the panel for odd (even) iterations in the SIAM. It is because we have shifted the chain sites by one to the left.** While there are two crossovers in the SIAM, here in the SIKM there is only one crossover, which is from the local moment regime to the Kondo regime.
-
-&nbsp;

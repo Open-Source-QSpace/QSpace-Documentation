@@ -146,5 +146,3 @@ F1I = contract(F1, '!1',I0, '!2')
 The resulting <span style="font-family: monospace; font-size:.85em">F1I</span> is also an annihilation operator, but it has the inward third leg.
 
 For details, type: <span style="font-family: monospace; font-size:.85em">getIdentityQS -?</span>
-
-&nbsp;

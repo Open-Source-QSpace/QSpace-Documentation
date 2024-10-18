@@ -52,5 +52,3 @@ Why? Let's draw the tensor network diagram for the first and second sectors of <
   <img src="../images/image_7.png" alt="Alt Text" width = "40%">
 </p>
 Attached to the legs are spin quantum numbers. Fusing two $S=1/2$ (two incoming legs of <span style="font-family: monospace; font-size:.85em">A1</span>) lead to two values of spin $S=0\oplus 1$ (outgoing leg of <span style="font-family: monospace; font-size:.85em">A1</span>). These two values can result in $S=1/2$ (outgoing leg of <span style="font-family: monospace; font-size:.85em">A2</span>) by being fused with one $S=1/2$ (bottom incoming leg of <span style="font-family: monospace; font-size:.85em">A2</span>). The outer multiplicity of <span style="font-family: monospace; font-size:.85em">A12</span> reflects this two different ways of having four legs of $S=1/2$. In this diagram, it is clear to see that the left leg of <span style="font-family: monospace; font-size:.85em">A1</span> and the bottom leg of <span style="font-family: monospace; font-size:.85em">A2</span> are not equivalent.
-
-&nbsp;

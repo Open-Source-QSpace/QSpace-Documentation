@@ -41,5 +41,3 @@ ans(:,:,1)&nbsp;=<br><br>&nbsp;&nbsp;&nbsp;&nbsp;0.5000<br><br><br>ans(:,:,2)&nb
 </span></div>
 
 Finally, note that the direct sum can only be performed when the indices that are not involved come from exactly the same linear space. Otherwise, the operation may become invalid.
-
-&nbsp;

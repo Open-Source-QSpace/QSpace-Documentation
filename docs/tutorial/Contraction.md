@@ -53,5 +53,3 @@ N2 = contract(F1, '!2*',{F1, '!1',{F1,  '!2*',F1}});
 In such syntax, the contraction inside the inner-most parenthesis <span style="font-family: monospace; font-size:.85em">{ }</span> is performed first, and then the contraction for the next inner-most parenthesis is done, and so on. In the above example, the parenthesis are given so that the contraction is performed over two right-most tensors, and contract the left ones iteratively. For details, type:
 
 <div style="margin:1em"><span style="font-family: monospace; font-size:.85em">>> contractQS -?</span></div>
-
-&nbsp;

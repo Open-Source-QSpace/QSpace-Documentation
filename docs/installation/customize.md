@@ -37,5 +37,3 @@ This document provides detailed explanations of the environment variables used i
 ## Setting Up on Other Platforms
 
 For users operating on platforms other than those mentioned, the `env_custom.sh` script should be utilized to set up these environment variables before compiling the QSpace library. This script allows users to manually specify the values of these variables tailored to their specific system configuration and preferences.
-
-&nbsp;

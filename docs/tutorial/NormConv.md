@@ -73,5 +73,3 @@ contract(I.E, '1,2',I.E, '1,2;*')
 &nbsp;data: 0-D double (112 bytes)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;1. 1x1&nbsp;&nbsp;&nbsp;[  ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.<br></span></div>
-
-&nbsp;

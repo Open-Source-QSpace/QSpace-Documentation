@@ -256,5 +256,3 @@ Ieig.AK
 </span></div>
 
 We can set several options for <span style="font-family: monospace; font-size:.85em">eigQS</span>, such as <span style="font-family: monospace; font-size:.85em">Nkeep</span> (number of **multiplets** to be kept) and <span style="font-family: monospace; font-size:.85em">Etrunc</span> (threshold energy such that the energy eigenvalues below the value are to be kept). For details, type: <span style="font-family: monospace; font-size:.85em">eigQS -?</span>
-
-&nbsp;

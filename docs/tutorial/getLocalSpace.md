@@ -65,5 +65,3 @@ Each model and option in `getLocalSpace` is designed to give users precise contr
 ## Decoding the Outputs
 - **Output Variables**: `FF`, `Iout`, and others vary based on the selected model. They represent the quantum states and operators configured by `getLocalSpace`.
 - **Usage in Quantum Models**: These outputs form the backbone of tensor network states, used in simulations and calculations in quantum physics.
-
-&nbsp;

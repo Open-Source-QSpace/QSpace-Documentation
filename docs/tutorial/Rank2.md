@@ -59,5 +59,3 @@ F  % Hermitian conjugate, the result is particle creation operators
 &nbsp;&nbsp;&nbsp;&nbsp;1. 1x1x1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;2x1x2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ 0 1 ; -1 0 ; -1 1 ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-1.414<br>&nbsp;&nbsp;&nbsp;&nbsp;2. 1x1x1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;1x2x2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ 1 0 ; &nbsp;0 1 ; -1 1 ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-1.414</span></div>
 
 However, it is advisable to use <span style="font-family: monospace; font-size:.85em">permute</span> and  <span style="font-family: monospace; font-size:.85em">contract</span> in general, to avoid any mistake.
-
-&nbsp;

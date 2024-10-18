@@ -25,5 +25,3 @@ If you encountered the error showing "Invalid MEX-file [...] Library not loaded:
 This issue typically happens when running intel-compiled MATLAB on an Apple Silicon Mac. The MATLAB and QSpace binaries are compiled for x86_64 architecture, while the gmp library is installed by default for arm64 architecture. In this scenario, it is recommended to install arm64-compiled MATLAB (available from MATLAB 2023b onwards) to ensure compatibility with the system architecture.
 
 If you still wish to use the intel-compiled MATLAB on an Apple Silicon Mac, you need to follow [these steps](/installation/macOS#install-homebrew) to set up an additional Homebrew installation under the Rosetta 2 emulation layer. This allows you to manage and install packages specifically for the intel architecture on Apple Silicon Macs. Make sure that the HOMEBREW_PREFIX is set to /usr/local, otherwise you need to adjust the path to the gmp library accordingly in the compile.sh script.
-
-&nbsp;

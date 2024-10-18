@@ -91,5 +91,3 @@ cd system && source configure && ./compile.sh
 ```
 
 The `configure` script sets up a command line tool `osqs` and the installation directory of QSpace library. The compile script calls the environment setup script before compiling the QSpace library. Customizations are available via setting `QS_CONFIG_ML_SH` environment variable pointing to a custom environment setup script.
-
-&nbsp;

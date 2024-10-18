@@ -26,5 +26,3 @@ Joining the Open Source QSpace organization is straightforward:
 2. **Contribute**: Membership is granted primarily to those who are actively contributing to the project or who have a demonstrated interest in advancing tensor network algorithms and quantum symmetry spaces.
 
 We welcome and value the unique perspectives and expertise each new member brings to QSpace. Together, we can propel the library to new heights, continuously adapting and refining it to meet the evolving challenges of quantum many-body physics and tensor network research. Join us in shaping the future of quantum many-body physics, one tensor at a time!
-
-&nbsp;

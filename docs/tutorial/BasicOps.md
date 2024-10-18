@@ -239,5 +239,3 @@ permuteQS   -?
 <br>
 AW (C) Aug 2006 ; May 2010 ; Oct 2014
 </span></div>
-
-&nbsp;

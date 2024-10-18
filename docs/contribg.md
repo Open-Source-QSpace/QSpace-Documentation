@@ -97,5 +97,3 @@ Once pushed, your code will undergo review and testing by peers and CI tools.
 ---
 
 This workflow, while structured, ensures that our codebase remains clean, stable, and manageable. By following these guidelines, you contribute not only code but also to the overall health and quality of the project.
-
-&nbsp;

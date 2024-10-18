@@ -88,5 +88,3 @@ I.E % identity operator
 <span style="font-family: monospace; font-size:.85em">F</span> and <span style="font-family: monospace; font-size:.85em">S</span> are rank-3 tensors, since they change charge and spin quantum numbers. On the other hand, <span style="font-family: monospace; font-size:.85em">Z</span>and <span style="font-family: monospace; font-size:.85em">I.E</span> are rank-2 tensors, since they do not change quantum numbers; that is, they are scalars in terms of the Clebsch-Gordan coefficients.
 
 <span style="font-family: monospace; font-size:.85em">getLocalSpace</span> can deal with general situations. For details, type in the MATLAB command window: <span style="font-family: monospace; font-size:.85em">'help getLocalSpace'</span>.
-
-&nbsp;
