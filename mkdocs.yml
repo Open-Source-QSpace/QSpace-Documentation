@@ -3,10 +3,14 @@ site_name: QSpace Documentation
 nav:
   - Getting started:
     - What is QSpace?: index.md
-    # - Community Edition: community.md
+    - Community Edition: community.md
     - Installation:
-      - "Install on Linux": Linux.md
-      - "Install on macOS": macOS.md
+      - "Install on Linux": installation/Linux.md
+      - "Install on macOS": installation/macOS.md
+      - "Troubleshooting": installation/troublesh.md
+      - "Customization": installation/customize.md
+    - Development:
+      - "Changelog": changelog.md
   - Tutorial:
     # - "Get to Know QSpace": tutorial/QSpace_intro.md
     - "Get to Know QSpace": tutorial/Get2Know.md
