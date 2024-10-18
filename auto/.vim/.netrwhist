@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/amnt/scratch/Andreas.Weichselbaum/UCI/Source/DMRG/Data'
+let g:netrw_dirhist_2='/home/a/Andreas.Weichselbaum/Source/DMRG/utilities'
+let g:netrw_dirhist_3='/project/theorie/a/Andreas.Weichselbaum/Matlab/MEX'
+let g:netrw_dirhist_4='/home/a/Andreas.Weichselbaum/Matlab/MEX'
