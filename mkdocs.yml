@@ -92,6 +92,7 @@ theme:
   features:
     - navigation.tabs
     - navigation.sections
+    - navigation.footer
     - content.action.edit
     - content.action.view
     - content.code.copy
@@ -134,9 +135,50 @@ repo_name: QSpace Documentation
 repo_url: https://github.com/Open-Source-QSpace/QSpace-Documentation
 edit_uri: edit/main/docs/
 
+copyright: Copyright &copy; 2024 Open Source QSpace Organization
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+      exclude:
+        - index.md
+  - git-committers:
+      repository: Open-Source-QSpace/QSpace-Documentation
+      branch: main
+      exclude:
+        - index.md
+
 extra:
-  version:
-    provider: mike
+  analytics: 
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >- 
+            Thanks for your feedback! Help us improve this page by
+            raising issues in our <a href="https://github.com/Open-Source-QSpace/QSpace-Documentation/issues" target="_blank" rel="noopener">repository</a>.
+  social:
+    - icon: fontawesome/brands/github
+      name: Organization
+      link: https://github.com/Open-Source-QSpace
+    - icon: fontawesome/brands/bitbucket
+      name: QSpace4u
+      link: https://bitbucket.org/qspace4u
+    - icon: fontawesome/brands/x-twitter
+      name: Technicality
+      link: https://arxiv.org/abs/2405.06632
+    - icon: fontawesome/brands/airbnb
+      name: MATLAB
+      link: https://www.mathworks.com/products/matlab.html
 
 extra_css:
   - stylesheets/extra.css
@@ -160,5 +202,6 @@ markdown_extensions:
 
 extra_javascript:
   - javascripts/mathjax.js
+  - javascripts/feedback.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
