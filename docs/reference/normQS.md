@@ -8,4 +8,3 @@ Usage: nrm = normQS(A)
 
  (C) AW : Jun 2010 ; Oct 2014
 ```
-&nbsp;

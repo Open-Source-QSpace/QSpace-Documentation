@@ -5,4 +5,3 @@ Usage: dd=diagQS(A)
 
 Wb (C) Aug 2016
 ```
-&nbsp;

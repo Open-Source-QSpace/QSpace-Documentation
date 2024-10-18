@@ -13,4 +13,3 @@ Usage: [D[,D2]] = getDimQS(A)
 
 (C) AW : May 2006 ; Oct 2014
 ```
-&nbsp;

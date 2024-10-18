@@ -6,4 +6,3 @@ Usage: i = isIdentityCG(A)
 
 Wb,Jan12,12
 ```
-&nbsp;

@@ -19,4 +19,3 @@ Usage: A = permuteQS(A, P [,'conj'])
 
 AW (C) Aug 2006 ; May 2010 ; Oct 2014
 ```
-&nbsp;

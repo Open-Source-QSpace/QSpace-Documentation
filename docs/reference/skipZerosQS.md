@@ -12,4 +12,3 @@ Usage: [A,n] = skipZerosQS(A [,eps,opts]);
 
 Wb,May14,10
 ```
-&nbsp;

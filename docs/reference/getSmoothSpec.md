@@ -37,4 +37,3 @@ Output
 see also fdmNRG.
 AWb (C) May 2006
 ```
-&nbsp;

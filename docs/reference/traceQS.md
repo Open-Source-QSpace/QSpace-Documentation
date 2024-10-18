@@ -9,4 +9,3 @@ Usage: x = traceQS(A [,i1,i2])
 
 AW (C) 2006 ; 2018
 ```
-&nbsp;

@@ -7,4 +7,3 @@ Usage: i = isIdentityQS(A [,eps])
 
 (C) AW : May 2006 ; Oct 2010 ; Oct 2014
 ```
-&nbsp;

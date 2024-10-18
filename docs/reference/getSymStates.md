@@ -38,4 +38,3 @@ and info structure I with the fields
 
 (C) Wb,Jul05,10
 ```
-&nbsp;

@@ -153,4 +153,3 @@ See also NRGWilsonQS, fdmNRG_QS, tdmNRG
 
 AW (C) 2008 ; RIXS 2019
 ```
-&nbsp;

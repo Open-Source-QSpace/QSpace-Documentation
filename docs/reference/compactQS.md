@@ -32,4 +32,3 @@ Options
 (C) AW : Apr 2010 ; Jul 2011 ; Oct 2014
 
 ```
-&nbsp;

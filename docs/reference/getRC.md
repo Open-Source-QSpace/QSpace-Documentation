@@ -13,4 +13,3 @@ Usage: C=getRC(<sym>,'--info');
 
 Wb,Oct 2015 ; Nov 2016
 ```
-&nbsp;

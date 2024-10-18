@@ -63,4 +63,3 @@ OUTPUT
 See also orthoQS.
 AW (C) Sep 2008 ; Aug 2015
 ```
-&nbsp;

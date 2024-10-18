@@ -97,4 +97,3 @@ input A, this may be shortended to getIdentity(A,...).
 
 (C) AW : Apr 2010 ; Oct 2014 ; May 2017
 ```
-&nbsp;
