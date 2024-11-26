@@ -1,5 +1,11 @@
 # Changlog
 
+### 4.0.2 (2024-11-26)
+
+- **Added:** `fuse` function for tensor index fusion.
+- **Added:** `decomp` function for various principal coponents decomposition.
+- **Fixed:** Update `oplus` function to accommodate the trailing OM index.
+
 ### 4.0.1 (2024-10-12)
 
 - **Added:** Create Metadata information after compilation.
