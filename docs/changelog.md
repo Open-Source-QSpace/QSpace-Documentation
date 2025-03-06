@@ -1,5 +1,19 @@
 # Changlog
 
+### 4.0.4 (2024-12-11)
+
+- **Added:** Support for the integration with the high performance tensor
+transpose (HPTT) library.
+  Invoking the HPTT library produces ~10% performance improvement in the
+  permutation operation for large tensors.
+
+### 4.0.3 (2024-12-10)
+
+- **Updated**: The built-in `permuteQS` receives performance improvements.
+  The built-in permutation is optimized for a better incorporation of the
+  OpenMP parallelization. The new implementation is ~20% faster than the
+  previous version.
+
 ### 4.0.2 (2024-11-26)
 
 - **Added:** `fuse` function for tensor index fusion.
