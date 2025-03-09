@@ -10,6 +10,7 @@ nav:
       - "Troubleshooting": installation/troublesh.md
       - "Customization": installation/customize.md
     - Development:
+      - "Standards": standards.md
       - "Changelog": changelog.md
   - Tutorial:
     - "Get to Know QSpace": tutorial/Get2Know.md
