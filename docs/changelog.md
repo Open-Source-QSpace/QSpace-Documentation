@@ -1,5 +1,10 @@
 # Changlog
 
+### 4.0.5 (2025-03-07)
+
+- **Added:** Official functions for converting MPS and MPO cell arrays
+according to the QSpace standard exchange protocol.
+
 ### 4.0.4 (2024-12-11)
 
 - **Added:** Support for the integration with the high performance tensor
